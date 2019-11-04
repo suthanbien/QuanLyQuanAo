@@ -14,7 +14,6 @@ public class Main extends Application {
         primaryStage.setTitle("Đăng Nhập");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
 
 

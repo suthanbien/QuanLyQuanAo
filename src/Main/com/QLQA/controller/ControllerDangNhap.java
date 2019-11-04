@@ -21,7 +21,6 @@ public class ControllerDangNhap {
     private boolean notAdmin=true;
     private String taiKhoan="",matkhau="";
     public int quyen=0;
-    private String databaseName="QuanLySanPham";
 
     public void btnDangNhapClick(ActionEvent actionEvent) {
 
@@ -97,7 +96,7 @@ public class ControllerDangNhap {
     public boolean kiemTraDangNhap(String username,String password){
         boolean ketqua=false;
         String sql="select * from Users where TenDangNhap= '"+username+"' and Password= '"+password+"'";
-        ConnectionClass connectionClass=new ConnectionClass(databaseName);
+        ConnectionClass connectionClass=new ConnectionClass();
         ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
         try {
             if (rs.next()) {

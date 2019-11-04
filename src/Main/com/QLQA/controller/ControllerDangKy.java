@@ -26,7 +26,6 @@ public class ControllerDangKy {
     public Button btnDangNhap;
     private int quyen=0;
     private String ten="";
-    private String databaseName="QuanLySanPham";
 
 
 
@@ -39,7 +38,7 @@ public class ControllerDangKy {
         Password = String.valueOf(txtMatKhau.getText()).trim();
         NhapLai = String.valueOf(txtNhapLaiMatKhau.getText());
         String kiemtraquyen = "select *from Quyen ";
-        ConnectionClass connectionClass=new ConnectionClass(databaseName);
+        ConnectionClass connectionClass=new ConnectionClass();
         ResultSet rs = connectionClass.ExcuteQueryGetTable(kiemtraquyen);
         try {
             while (rs.next()) {
@@ -119,7 +118,7 @@ public class ControllerDangKy {
         boolean kq = false;
         String sql = "select * from Users where TenDangNhap= '" + tendangnhap + "' and Password= '" + matkhau + "'";
         System.out.println(sql);
-        ConnectionClass connectionClass=new ConnectionClass(databaseName);
+        ConnectionClass connectionClass=new ConnectionClass();
         ResultSet rs = connectionClass.ExcuteQueryGetTable(sql);
         try {
             if (rs.next()) {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.com.QLQA.controller.ControllerSanPhamAn">
+   <children>
+      <Label layoutX="296.0" layoutY="28.0" prefHeight="49.0" prefWidth="203.0" text="Sản Phẩm Đã Ẩn">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblSanPhamAn" layoutX="14.0" layoutY="78.0" onMouseClicked="#tblSanPhamAn" prefHeight="228.0" prefWidth="770.0">
+        <columns>
+          <TableColumn fx:id="columMaSanPhamAn" prefWidth="126.39996910095215" text="Mã Sản Phẩm" />
+          <TableColumn fx:id="columTenSPAn" prefWidth="313.6000061035156" text="Tên Sản Phẩm" />
+            <TableColumn fx:id="columLoaiSPAn" prefWidth="201.60000610351562" text="Loại Sản Phẩm" />
+            <TableColumn fx:id="columTonKhoAn" prefWidth="125.5999755859375" text="Tồn Kho" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnHienLaiAn" layoutX="321.0" layoutY="525.0" mnemonicParsing="false" onAction="#btnHienLaiAnClick" prefHeight="50.0" prefWidth="151.0" text="Hiện Lại">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Pane layoutX="130.0" layoutY="313.0" prefHeight="180.0" prefWidth="534.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+         <children>
+            <TextField fx:id="txtTimKiem" layoutX="193.0" layoutY="14.0" />
+            <RadioButton fx:id="radTimTheoTenAN" layoutX="83.0" layoutY="63.0" mnemonicParsing="false" onAction="#TimKiemAnClick" text="Tìm Theo Tên">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="TimKiemSPAnGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="radTimTheoMaAn" layoutX="329.0" layoutY="63.0" mnemonicParsing="false" onAction="#TimKiemAnClick" text="Tìm Theo Mã" toggleGroup="$TimKiemSPAnGroup">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radTimTheoLoaiAn" layoutX="83.0" layoutY="120.0" mnemonicParsing="false" onAction="#TimKiemAnClick" text="Tìm Theo Loại" toggleGroup="$TimKiemSPAnGroup">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </RadioButton>
+            <ComboBox fx:id="cboTimSPAN" layoutX="329.0" layoutY="116.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
