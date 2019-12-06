@@ -14,6 +14,9 @@ public class Main extends Application {
         primaryStage.setTitle("Đăng Nhập");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        //lấy này điền vào main
+        //--module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
     }
 
 
