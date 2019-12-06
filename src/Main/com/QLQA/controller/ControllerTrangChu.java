@@ -1,12 +1,15 @@
 package Main.com.QLQA.controller;
 
 import Main.com.QLQA.entity.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,36 +24,18 @@ import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ControllerTrangChu {
     public TableView tblBangHoaDon;
     public TableView tblBangChiTietHD;
-    public TextField txtMaHoaDon;
-    public TextField txtTongTien;
-    public TextField txtMaHoaDonCT;
-    public TextField txtMaCTDH;
-    public TextField txtThanhTien;
-    public TextArea textGiChuCTHD;
-    public TextArea textGhiChuHD;
-    public ComboBox cbNhanVien;
-    public ComboBox cbKhachHang;
-    public ComboBox cbSanPham;
-    public DatePicker dateNgayLap;
-    public Button btnXoaHD;
-    public TextField txtSoLuong;
-    public Button btnThemHD;
-    public Button btnSuaHD;
-    public Button btnReSetCTHD;
-    public Button btnReSetHD;
-    public Button btnThemCTHD;
-    public Button btnXoaCTHD;
-    public Button btnSuaCTHD;
     public TableView<NhaPhanPhoi> tblNhaPhanPhoi;
     public TextField txtMaNPP;
     public TextField txtTenNPP;
@@ -192,6 +177,77 @@ public class ControllerTrangChu {
     public Tab tabSanPham;
     public ComboBox cboHangSanXuatSP;
     public Button btnXoaHinh;
+    public Tab tabHoaDon;
+    public Button butonTheMKhachHangHD;
+    public ComboBox cboMaKhachHangHD;
+    public TextField txtMaNhanVienHD;
+    public TextField txtSDTKhachHangHD;
+    public TextField txtDiaChiKHHD;
+    public TextField txtNhanVienHD;
+    public DatePicker dateNgayLApHD;
+    public Button btnTaoMoiHD;
+    public Button btnThemChiTietHD;
+    public Button btnXoaChiTietHD;
+    public Button btnLuuHD;
+    public BorderPane boderPaneHD;
+    public TextField txtTongCongHD;
+    public ScrollPane scrollPaneHD;
+    public TextField txtTenkhachHangHD;
+    public TextField txtMaHoaDonHD;
+    public TableColumn colMaHoaDonHD;
+    public TableColumn colKhachHangHD;
+    public TableColumn colNhanVienHD;
+    public TableColumn colNgayLapHD;
+    public TableColumn colTongTienHD;
+    public TableColumn colGhiChuHD;
+    public TableColumn colMaCTHD;
+    public TableColumn colMaHDCTHD;
+    public TableColumn colSoLuongCTHD;
+    public TableColumn colSanPhamCTHD;
+    public TableColumn colTongTienCTHD;
+    public TableColumn colGhiChuCTHD;
+    public TextField txtMaHoaDonXHD;
+    public TextField txtTongTienXHD;
+    public TextArea textGhiChuXHD;
+    public Button btnSuaXHD;
+    public Button btnReSetXHD;
+    public TextField txtTimTheoMaXHD;
+    public RadioButton radTimHDTheoMa;
+    public ToggleGroup TimHoaDonGroup;
+    public RadioButton radTimHDTheoKhachHang;
+    public RadioButton radTimHDtheoNhanVien;
+    public RadioButton radTimHDTheoNgay;
+    public DatePicker dateTimXHD;
+    public ComboBox cboNhanVienTimXHD;
+    public ComboBox cboKhachHangTimXHD;
+    public TextField txtNhanVienXHD;
+    public TextField txtKhachHangXHD;
+    public TextField txtNgayLapXHD;
+    public int quyentc=1;
+    public String userDangNhap="admin";
+    public String tenUser="";
+    public String idUser="";
+    public Tab tabDoanhThu;
+    public Button btnMoQuyen;
+    public Tab tabNhanVien;
+    public Tab tabTrangChu;
+    ConnectionClass kncsdl=new ConnectionClass();
+    ComboBox<String> cboMaMatHangCTHD;
+    ComboBox<String> cboTenMHCTHD;
+    GridPane gridPane;
+    int nRowsCT=0;
+    List<TextField> txtSTTList=new ArrayList();
+    List<TextField> txtMSMatHangList=new ArrayList();
+    List<TextField> txtTenMatHangList=new ArrayList();
+    List<TextField> txtSoLuongList=new ArrayList();
+    List<TextField> txtDonGiaList=new ArrayList();
+    List<TextField> txtTriGiaList=new ArrayList();
+    String MSKH_Luu="";
+    String MSMH_Luu="";
+
+    String maNhanVienUser="";
+    int rowDangChonCTHoaDon=-1;
+
 
     private FileChooser fileChooser;
     private File file;
@@ -207,12 +263,15 @@ public class ControllerTrangChu {
     ArrayList<TaiKhoan> listTaiKhoan;
     ArrayList<LoaiSanPham> listLoaiSanPham;
     ArrayList<SanPham> listSanPham;
+    ArrayList<HoaDon> listHoaDon;
+    ArrayList<ChiTietHoaDon> listChiTietHoaDon;
 
     //Tạo list Cho Combobox
     private ObservableList lisLoaiKhachHang;
     private ObservableList listChucVuNhanVien;
     private ObservableList listQuyen;
     private ObservableList listTenNhanVien;
+    private ObservableList listTenKhachHang;
     private ObservableList lisLoaiSanPhamcbo;
     private ObservableList listHangSanXuat;
     //lấy Truyền dữ liệu vào bảng
@@ -384,6 +443,54 @@ public class ControllerTrangChu {
         }
     }
 
+    private void getTableHoaDon(){
+        setCellTableHoaDon();
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            listHoaDon = new ArrayList<HoaDon>();
+            while(rs.next()) {
+                HoaDon dataHoaDon=new HoaDon(rs.getInt(1),
+                        rs.getString(8), rs.getString(16),
+                        rs.getString(4), rs.getString(5),
+                        rs.getString(6));
+                listHoaDon.add(dataHoaDon);
+            }
+            tblBangHoaDon.getItems().clear();
+            tblBangHoaDon.getItems().addAll(listHoaDon);
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin Hóa Đơn"+ex);
+        }
+    }
+
+    private void getTableChiTietHoaDon(String mahoadon){
+        setCellTableChiTietHoaDon();
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="select * from ChiTietHoaDon,HoaDon,SanPham "
+                    +"where ChiTietHoaDon.MaHoaDon=HoaDon.MaHoaDon and ChiTietHoaDon.MaSanPham=SanPham.MaSanPham "
+                    +"and ChiTietHoaDon.MaHoaDon="+mahoadon;
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            listChiTietHoaDon = new ArrayList<ChiTietHoaDon>();
+            while(rs.next()) {
+                ChiTietHoaDon dataChiTietHD=new ChiTietHoaDon(rs.getInt(1),
+                        rs.getInt(2),rs.getString(14),
+                        rs.getString(4),rs.getString(5),
+                        rs.getString(6));
+                listChiTietHoaDon.add(dataChiTietHD);
+            }
+            tblBangChiTietHD.getItems().clear();
+            tblBangChiTietHD.getItems().addAll(listChiTietHoaDon);
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
+        }
+    }
+
     //set vị trí của các cột trong bảng
     private void setCellTableNPP(){
         columMaNPP.setCellValueFactory(new PropertyValueFactory<>("maNhaPhanPhoi"));
@@ -451,6 +558,26 @@ public class ControllerTrangChu {
 
     }
 
+    private void setCellTableHoaDon(){
+        colMaHoaDonHD.setCellValueFactory(new PropertyValueFactory<>("maHoaDon"));
+        colKhachHangHD.setCellValueFactory(new PropertyValueFactory<>("tenKhachHang"));
+        colNhanVienHD.setCellValueFactory(new PropertyValueFactory<>("tenNhanVien"));
+        colNgayLapHD.setCellValueFactory(new PropertyValueFactory<>("ngayLap"));
+        colTongTienHD.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
+        colGhiChuHD.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
+
+    }
+
+    private void setCellTableChiTietHoaDon(){
+        colMaCTHD.setCellValueFactory(new PropertyValueFactory<>("maCTHD"));
+        colMaHDCTHD.setCellValueFactory(new PropertyValueFactory<>("maHoaDon"));
+        colSanPhamCTHD.setCellValueFactory(new PropertyValueFactory<>("tenSanPham"));
+        colSoLuongCTHD.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+        colTongTienCTHD.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
+        colGhiChuCTHD.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
+    }
+
+
     // Thêm
     private void themNPP() throws SQLException {
         ConnectionClass connectionClass=new ConnectionClass();
@@ -505,7 +632,7 @@ public class ControllerTrangChu {
             strGioiTinhKH="nữ";
         }
         strLoaiKH= cbLoaiKhachHang.getValue().toString();
-        System.out.println(strLoaiKH);
+        //System.out.println(strLoaiKH);
         if(strLoaiKH.equals("vip")){
             numLoaiKH=1;
         }else if(strLoaiKH.equals("sinh viên")){
@@ -798,6 +925,17 @@ public class ControllerTrangChu {
         getTableSanPham();
     }
 
+    private void   setMacDinhHoaDon() throws SQLException {
+        txtMaHoaDonXHD.setText("");
+        txtNhanVienXHD.setText("");
+        txtKhachHangXHD.setText("");
+        txtNgayLapXHD.setText("");
+        txtTongTienXHD.setText("");
+        textGhiChuXHD.setText("");
+        getTableHoaDon();
+    }
+
+
     //Truyền dữ liệu vào combobox
     private  String getComboxLoaiKhachHang() throws SQLException {
         ConnectionClass connectionClass=new ConnectionClass();
@@ -902,6 +1040,69 @@ public class ControllerTrangChu {
         cboHangSanXuatSP.setValue("Hãng Khác");
         return (String) cboHangSanXuatSP.getValue();
     }
+
+    private String TruyenTenKhachHang() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        listTenKhachHang = FXCollections.observableArrayList();
+        String sqlChucVuNhanVien="select TenKhachHang from KhachHang ";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            listTenKhachHang.add(rs.getString(1));
+        }
+        cboKhachHangTimXHD.setItems(listTenKhachHang);
+        //cboNhanVienTimXHD.set;
+        return (String) cboKhachHangTimXHD.getValue();
+    }
+
+    private String TruyenTenNhanVien() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        listTenNhanVien = FXCollections.observableArrayList();
+        String sqlChucVuNhanVien="select TenNhanVien from NhanVien ";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            listTenNhanVien.add(rs.getString(1));
+        }
+        cboNhanVienTimXHD.setItems(listTenNhanVien);
+        return (String) cboNhanVienTimXHD.getValue();
+    }
+
+    public void TruyenKhachHang() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        //listHangSanXuat = FXCollections.observableArrayList();
+        String sqlChucVuNhanVien="select MaKhachHang from KhachHang order by MaKhachHang";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            cboMaKhachHangHD.getItems().add(rs.getString(1));
+        }
+    }
+
+    public void TruyenMAMH() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        //listHangSanXuat = FXCollections.observableArrayList();
+        String sqlChucVuNhanVien="select MaSanPham from SanPham  where TrangThai=1";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            cboMaMatHangCTHD.getItems().add(rs.getString(1));
+        }
+    }
+
+    public void TruyenTenMH() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        //listTenMA = FXCollections.observableArrayList();
+        String sqlChucVuNhanVien="select TenSanPham from SanPham  where TrangThai=1";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            cboTenMHCTHD.getItems().add(rs.getString(1));
+        }
+    }
+
+
+
 
     //Sửa Thông tin
     private void suaThongTinNhaPhanPhoi(){
@@ -1160,6 +1361,29 @@ public class ControllerTrangChu {
         }
     }
 
+    private void suaThongTinHoaDon() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        String strGhiChu = "";
+        String strMaHoaDon = "";
+        strGhiChu=textGhiChuXHD.getText();
+        strMaHoaDon=txtMaHoaDonXHD.getText();
+
+        if(ThongBaoDelete("Bạn muốn sửa hóa đơn: "+strMaHoaDon)==true){
+            if(strMaHoaDon.length()==0){
+                ThongBao("Vui Lòng Chọn Hóa Đơn", "Lỗi", 2);
+            }
+            else {
+                String sql="update HoaDon set GhiChu=N'"+strGhiChu+"' where MaHoaDon='"+strMaHoaDon+"'";
+                System.out.println(sql);
+                connectionClass.ExcuteQueryUpdateDB(sql);
+                ThongBao("Cập Nhật Thành Công", "Thành Công", 2);
+                setMacDinhHoaDon();
+                getTableHoaDon();
+            }
+
+        }
+    }
+
     //Xóa Thông Tin
     private void XoaThongTinNhaPhanPhoi(){
         String strMaNPP=txtMaNPP.getText();
@@ -1368,6 +1592,19 @@ public class ControllerTrangChu {
         }
     }
 
+    private void getDaTaHoaDon(int index) throws SQLException {
+        HoaDon hoaDon= (HoaDon) tblBangHoaDon.getItems().get(index);
+        txtMaHoaDonXHD.setText(""+hoaDon.getMaHoaDon());
+        txtNhanVienXHD.setText(hoaDon.getTenNhanVien());
+        txtKhachHangXHD.setText(hoaDon.getTenKhachHang());
+        txtNgayLapXHD.setText(hoaDon.getNgayLap());
+        txtTongTienXHD.setText(hoaDon.getTongTien());
+        textGhiChuXHD.setText(hoaDon.getGhiChu());
+
+        getTableChiTietHoaDon(""+hoaDon.getMaHoaDon());
+
+    }
+
     // Chức năng tìm kiếm
     private void TimKhachHang() throws SQLException {
         String strTenKH=txtTimTenKH.getText();
@@ -1407,6 +1644,7 @@ public class ControllerTrangChu {
             System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
         }
     }
+
     private void TimNhanVien(){
         String strMaNV;
         String strTenNV;
@@ -1442,47 +1680,101 @@ public class ControllerTrangChu {
             System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
         }
     }
-    private void TimSanPham(){ ;
-        String strTim,strLoaiSP;
-        strTim=txtTimKiemSP.getText();
-        strLoaiSP=""+cboTimLoaiSanPhamSP.getValue().toString();
-        String  sql="select * from SanPham,HangSanXuat,LoaiSanPham "
-                +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1";
-        if(strTim.length()==0&&radTimTheoLoaiSP.isSelected()==false)
-        {
-            sql="select * from SanPham,HangSanXuat,LoaiSanPham "
-                    +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1";
-        }else if(radTimTheoMaSP.isSelected()){
-            sql="select * from SanPham,HangSanXuat,LoaiSanPham "
-                    +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and MaSanPham="
-            +strTim;
-        }
-        else if(radTimTheoTenSP.isSelected()){
-            sql="select * from SanPham,HangSanXuat,LoaiSanPham "
-                    +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and TenSanPham=N'"
-                    +strTim+"'";
-        }else if(radTimTheoLoaiSP.isSelected()){
-            sql="select * from SanPham,HangSanXuat,LoaiSanPham "
-                    +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and LoaiSanPham.TenLoaiSanPham=N'"
-                    +strLoaiSP+"'";
-        }
 
-        setCellTableSanPham();
+    private void TimSanPham(){ ;
+        try {
+            String strTim,strLoaiSP;
+            strTim=txtTimKiemSP.getText();
+            strLoaiSP=""+cboTimLoaiSanPhamSP.getValue().toString();
+            String  sql="select * from SanPham,HangSanXuat,LoaiSanPham "
+                    +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1";
+            if(strTim.length()==0&&radTimTheoLoaiSP.isSelected()==false)
+            {
+                sql="select * from SanPham,HangSanXuat,LoaiSanPham "
+                        +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1";
+            }else if(radTimTheoMaSP.isSelected()){
+                sql="select * from SanPham,HangSanXuat,LoaiSanPham "
+                        +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and MaSanPham="
+                        +strTim;
+            }
+            else if(radTimTheoTenSP.isSelected()){
+                sql="select * from SanPham,HangSanXuat,LoaiSanPham "
+                        +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and TenSanPham=N'"
+                        +strTim+"'";
+            }else if(radTimTheoLoaiSP.isSelected()){
+                sql="select * from SanPham,HangSanXuat,LoaiSanPham "
+                        +"where SanPham.LoaiSanPham=LoaiSanPham.MaLoaiSanPham and SanPham.HangSanXuat=HangSanXuat.MaHangSanXuat and TrangThai=1 and LoaiSanPham.TenLoaiSanPham=N'"
+                        +strLoaiSP+"'";
+            }
+
+            setCellTableSanPham();
+            try {
+                ConnectionClass connectionClass = new ConnectionClass();
+
+                ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+                listSanPham = new ArrayList<SanPham>();
+                while(rs.next()) {
+                    SanPham dataSanPham=new SanPham(rs.getInt(1),
+                            rs.getString(2),rs.getString(14),
+                            rs.getString(12),rs.getString(5),
+                            rs.getString(6),rs.getString(7),
+                            rs.getInt(8),rs.getString(10));
+                    listSanPham.add(dataSanPham);
+                }
+                tblSanPhamSP.getItems().clear();
+                tblSanPhamSP.getItems().addAll(listSanPham);
+
+            }
+            catch (Exception ex){
+
+            }
+        }catch (Exception ex){
+
+        }
+    }
+
+    private void TimHoaDon() throws SQLException {
+        String strTimTheoMa,strTimTheoNgay,strTimNhanVien,strTimKhachHang;
+        strTimTheoMa=txtTimTheoMaXHD.getText();
+        strTimTheoNgay=dateTimXHD.getValue().toString();
+        strTimNhanVien= ""+TruyenTenNhanVien();
+        strTimKhachHang=""+TruyenTenKhachHang();
+        String  sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien";
+
+        if(radTimHDTheoNgay.isSelected())
+        {
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien"
+                    +" and HoaDon.NgayLapHoaDon='"+strTimTheoNgay+"'";
+
+        }else if(radTimHDtheoNhanVien.isSelected()){
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien"
+                    +" and NhanVien.TenNhanVien=N'"+strTimNhanVien+"'";
+        }
+        else if(radTimHDTheoKhachHang.isSelected()){
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien"
+                    +" and KhachHang.TenKhachHang=N'"+strTimKhachHang+"'";
+        }else if(radTimHDTheoMa.isSelected()&&strTimTheoMa.length()==0){
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien";
+        }else if(radTimHDTheoMa.isSelected()){
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien"
+                    +" and HoaDon.MaHoaDon="+strTimTheoMa+"";
+        }else {
+            sql="select * from HoaDon,KhachHang,NhanVien where HoaDon.MaKhachHang=KhachHang.MaKhachHang and HoaDon.MaNhanVien=NhanVien.MaNhanVien";
+        }
+        setCellTableHoaDon();
         try {
             ConnectionClass connectionClass = new ConnectionClass();
-
             ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
-            listSanPham = new ArrayList<SanPham>();
+            listHoaDon = new ArrayList<HoaDon>();
             while(rs.next()) {
-                SanPham dataSanPham=new SanPham(rs.getInt(1),
-                        rs.getString(2),rs.getString(14),
-                        rs.getString(12),rs.getString(5),
-                        rs.getString(6),rs.getString(7),
-                        rs.getInt(8),rs.getString(10));
-                listSanPham.add(dataSanPham);
+                HoaDon dataHoaDon=new HoaDon(rs.getInt(1),
+                        rs.getString(8), rs.getString(16),
+                        rs.getString(4), rs.getString(5),
+                        rs.getString(6));
+                listHoaDon.add(dataHoaDon);
             }
-            tblSanPhamSP.getItems().clear();
-            tblSanPhamSP.getItems().addAll(listSanPham);
+            tblBangHoaDon.getItems().clear();
+            tblBangHoaDon.getItems().addAll(listHoaDon);
 
         }
         catch (Exception ex){
@@ -1544,18 +1836,541 @@ public class ControllerTrangChu {
         }
     }
 
+    //Thêm Chi Tiết Hóa Đơn
+
+    public void ThemChiTietHD(){
+        TextField txt;
+        txt = new TextField();
+        txtSTTList.add(txt);
+        txt.setPrefWidth(240);
+        txt.setId("ST"+nRowsCT);
+        txt.setEditable(false);
+        txt.setOnMouseClicked(e-> STT_MouseClick(txt.getId()));
+        gridPane.add(txt,0, nRowsCT);
+
+
+        TextField txtMSMH=new TextField();
+        txtMSMatHangList.add(txtMSMH);
+        txtMSMH.setPrefWidth(240);
+        txtMSMH.setId("MS"+nRowsCT);
+        txtMSMH.setOnMouseClicked(e-> MSMH_MouseClick(txtMSMH.getId()));
+        gridPane.add(txtMSMH, 1, nRowsCT);
+
+        TextField txtTenMH=new TextField();
+        txtTenMatHangList.add(txtTenMH);
+        txtTenMH.setPrefWidth(240);
+        txtTenMH.setId("TEN"+nRowsCT);
+        txtTenMH.setOnMouseClicked(e-> TenMH_MouseClick(txtTenMH.getId()));
+        gridPane.add(txtTenMH, 2, nRowsCT);
+
+
+
+        TextField txtSoLuong = new TextField();
+        txtSoLuongList.add(txtSoLuong);
+        txtSoLuong.setPrefWidth(240);
+        gridPane.add(txtSoLuong, 4, nRowsCT);
+        txtSoLuong.setOnKeyReleased(e->TriGia_Change());
+
+
+        TextField txtDonGia = new TextField();
+        txtDonGiaList.add(txtDonGia);
+        txtDonGia.setPrefWidth(240);
+        txtDonGia.setEditable(false);
+        gridPane.add(txtDonGia, 5, nRowsCT);
+        txtDonGia.setOnKeyReleased(e->TriGia_Change());
+
+
+        TextField txtTriGia = new TextField();
+        txtTriGiaList.add(txtTriGia);
+        txtTriGia.setPrefWidth(240);
+        txtTriGia.setAlignment(Pos.CENTER_RIGHT);
+        txtTriGia.setEditable(false);
+        gridPane.add(txtTriGia, 6, nRowsCT);
+        nRowsCT++;
+        txtSTTList.get(nRowsCT-1).setText(String.valueOf(nRowsCT));
+        scrollPaneHD.setVvalue(1);
+
+        Kiem_Hop_Le();
+    }
+
+    // Click
+
+    public void  cboKhacHangClick(){
+
+        try {
+            MSKH_Luu=cboMaKhachHangHD.getSelectionModel().getSelectedItem().toString();
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="select * from KhachHang where MaKhachHang="+MSKH_Luu ;
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            while (rs.next()){
+                txtTenkhachHangHD.setText(rs.getString("TenKhachHang"));
+                txtDiaChiKHHD.setText(rs.getString("DiaChi"));
+                txtSDTKhachHangHD.setText(rs.getString("SDT"));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        Kiem_Hop_Le();
+    }
+
+    public void  MSMH_MouseClick(String s){
+        try{
+            String id =  s.substring(2);
+            int row = Integer.parseInt(id);
+            cboMaMatHangCTHD.setId("cboMH"+id);
+            cboMaMatHangCTHD.setOnAction(e->setCboMSMH_Click(cboMaMatHangCTHD.getId()));
+            cboMaMatHangCTHD.focusedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
+                    if (newValue.booleanValue()) {
+                        focusGainedMa(cboMaMatHangCTHD);
+                        // System.out.println(cboMatHang.getId());
+                    } else {
+                        focusLostMa(cboMaMatHangCTHD);
+                       // System.out.println("focusLost");
+                    }
+                }
+            });
+            gridPane.add(cboMaMatHangCTHD, 1, row);
+
+        }
+        catch (Exception ex){}
+        Kiem_Hop_Le();
+    }
+
+    public void  STT_MouseClick(String s){
+            String id =  s.substring(2);
+             rowDangChonCTHoaDon = Integer.parseInt(id);
+             btnXoaChiTietHD.setDisable(false);
+    }
+
+    public void XoaChiTietHoaDon(){
+        System.out.println(rowDangChonCTHoaDon);
+        txtSoLuongList.get(rowDangChonCTHoaDon).setText("0");
+        gridPane.getChildren().remove(txtSTTList.get(rowDangChonCTHoaDon));
+        gridPane.getChildren().remove(txtMSMatHangList.get(rowDangChonCTHoaDon));
+        gridPane.getChildren().remove(txtTenMatHangList.get(rowDangChonCTHoaDon));
+        gridPane.getChildren().remove(txtSoLuongList.get(rowDangChonCTHoaDon));
+        gridPane.getChildren().remove(txtDonGiaList.get(rowDangChonCTHoaDon));
+        gridPane.getChildren().remove(txtTriGiaList.get(rowDangChonCTHoaDon));
+        btnXoaChiTietHD.setDisable(true);
+
+        Kiem_Hop_Le();
+    }
+
+    public void  TenMH_MouseClick(String s){
+        try{
+            String id =  s.substring(3);
+            int row = Integer.parseInt(id);
+            cboTenMHCTHD.setId("cboTen"+id);
+            cboTenMHCTHD.setOnAction(e->setCboTenMH_Click(cboTenMHCTHD.getId()));
+            cboTenMHCTHD.focusedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
+                    if (newValue.booleanValue()) {
+                         focusGainedTen(cboTenMHCTHD);
+                        // System.out.println(cboMatHang.getId());
+                    } else {
+                         focusLostTen(cboTenMHCTHD);
+                       // System.out.println("focusLost");
+                    }
+                }
+            });
+            gridPane.add(cboTenMHCTHD, 2, row);
+
+        }
+        catch (Exception ex){
+        }
+        Kiem_Hop_Le();
+    }
+
+    public void  setCboMSMH_Click(String s){
+        try {
+            String id =  s.substring(5);
+            int row = Integer.parseInt(id);
+            //System.out.println(row);
+            MSMH_Luu=cboMaMatHangCTHD.getSelectionModel().getSelectedItem().toString();
+            ResultSet rs = kncsdl.Tim_MSSanPham(MSMH_Luu);
+
+            while (rs.next()){
+                txtMSMatHangList.get(row).setText(rs.getString(1));
+                txtTenMatHangList.get(row).setText(rs.getString(2));
+                txtDonGiaList.get(row).setText(rs.getString(6));
+            }
+            if(txtSoLuongList.get(row).getText().length()!=0){
+                TriGia_Change();
+            }
+        }
+        catch (Exception e) {
+
+        }
+        Kiem_Hop_Le();
+    }
+
+    public void  setCboTenMH_Click(String s){
+        try {
+            String id =  s.substring(6);
+            int row = Integer.parseInt(id);
+            MSMH_Luu=cboTenMHCTHD.getSelectionModel().getSelectedItem().toString();
+            ResultSet rs = kncsdl.Tim_TenSanPham(MSMH_Luu);
+
+            while (rs.next()){
+                txtMSMatHangList.get(row).setText(rs.getString(1));
+                txtTenMatHangList.get(row).setText(rs.getString(2));
+                txtDonGiaList.get(row).setText(rs.getString(6));
+            }
+            if(txtSoLuongList.get(row).getText().length()!=0){
+                TriGia_Change();
+            }
+        }
+        catch (Exception e) {
+
+        }
+        Kiem_Hop_Le();
+    }
+
+    public void TriGia_Change(){
+        float TongTriGia=0;
+        for(int i=0; i<nRowsCT; i++) {
+            float SoLuong = MyLib.getFloat(txtSoLuongList.get(i).getText());
+            float DonGia = MyLib.getFloat(txtDonGiaList.get(i).getText());
+            float TriGia = SoLuong * DonGia;
+            txtTriGiaList.get(i).setText(String.format("%,12.0f", TriGia));
+            TongTriGia += TriGia;
+        }
+        txtTongCongHD.setText(String.format("%,12.0f", TongTriGia));
+        Kiem_Hop_Le();
+
+    }
+
+    public void focusLostMa(ComboBox cbo){
+        gridPane.getChildren().remove(cbo);
+        Kiem_Hop_Le();
+    }
+
+    public void focusGainedMa(ComboBox cbo){
+
+        Kiem_Hop_Le();
+    }
+
+    public void focusLostTen(ComboBox cbo){
+        gridPane.getChildren().remove(cbo);
+        Kiem_Hop_Le();
+    }
+
+    public void focusGainedTen(ComboBox cbo){
+
+        Kiem_Hop_Le();
+    }
+
+
+    public void  Kiem_Hop_Le(){
+        boolean HopLe = SHD_HopLe_LucThem() && MSKH_HopLe() && nRowsCT>0 && MSMH_HopLe()
+                && SL_HopLe()&&SLTrongKhoHopLe();
+        //  System.out.println("Kiem tra hop le: "+HopLe);
+        btnLuuHD.setDisable(!HopLe);
+    }
+
+    public boolean SL_HopLe(){
+        boolean HopLe=true;
+        for(int i=0;i<nRowsCT; i++) {
+            HopLe &= MyLib.isInt(txtSoLuongList.get(i).getText());
+        }
+        return HopLe;
+    }
+
+    public boolean SLTrongKhoHopLe(){
+        boolean HopLe=true;
+        String maSanPham;
+        int soluongMua;
+        int soLuongCon = 0;
+        for(int i=0;i<nRowsCT; i++) {
+            maSanPham=txtMSMatHangList.get(i).getText();
+            soluongMua=Integer.parseInt(txtSoLuongList.get(i).getText());
+            try {
+                ConnectionClass connectionClass = new ConnectionClass();
+                String sql="select TonKho From SanPham where MaSanPham="+maSanPham;
+                ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+                while(rs.next()) {
+                    soLuongCon=rs.getInt(1);
+                }
+            }
+            catch (Exception ex){}
+            if (soLuongCon>=soluongMua){
+                return HopLe;
+            }else {
+                return false;
+            }
+        }
+        return HopLe;
+    }
+
+    public boolean MSKH_HopLe(){
+        // System.out.println("Khach Hang HopLe "+! MSKH_Luu.equals(""));
+        return ! MSKH_Luu.equals("");
+    }
+
+    public boolean  MSMH_HopLe(){
+        boolean HopLe = true;
+        List<String> MSMHList = new ArrayList<>();
+        for(int i=0; i<nRowsCT; i++) {
+            String MSMH = txtMSMatHangList.get(i).getText();
+            HopLe &= ! MSMH.equals("");
+            HopLe &= ! MyLib.isInList(MSMH, MSMHList);
+            MSMHList.add(MSMH);
+        }
+        // System.out.println("Hang Hoa HopLe "+HopLe);
+        return HopLe;
+    }
+
+    public void  Luu_ToanBo(){
+        if(ThongBaoDelete("Bạn muốn lưu hóa đơn ")==true){
+        try
+        {
+
+            kncsdl.Them_HoaDon(cboMaKhachHangHD.getValue().toString(),txtMaNhanVienHD.getText(),dateNgayLApHD.getValue().toString(),
+                    Float.parseFloat(txtTongCongHD.getText().replace(".","")));
+           // System.out.println("n cout"+nRowsCT);
+            for(int i=0; i<nRowsCT; i++) {
+                //System.out.println(txtMSMatHangList.get(i).getId());
+                //System.out.println(txtTriGiaList.get(i).getText());
+                kncsdl.Them_ChiTietHoaDon(txtMaHoaDonHD.getText(),txtMSMatHangList.get(i).getText(),
+                        Float.parseFloat(txtSoLuongList.get(i).getText()),
+                        Float.parseFloat(txtTriGiaList.get(i).getText().replace(".","")));
+            }
+            TruTrongKho();
+            btnLuuHD.setDisable(true);
+            btnTaoMoiHD.setDisable(false);
+            btnThemChiTietHD.setDisable(true);
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage()+ ". Cần chuyển sang Region Settings là Việt Nam");
+        }
+        }
+    }
+
+    public void TruTrongKho(){
+
+        String maSanPham;
+        int soluongMua;
+        int soLuongCon = 0;
+        int conlaisaukhimua = 0;
+        for(int i=0;i<nRowsCT; i++) {
+            maSanPham=txtMSMatHangList.get(i).getText();
+            soluongMua=Integer.parseInt(txtSoLuongList.get(i).getText());
+            try {
+                ConnectionClass connectionClass = new ConnectionClass();
+                String sql="select TonKho From SanPham where MaSanPham="+maSanPham;
+                ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+                while(rs.next()) {
+                    soLuongCon=rs.getInt(1);
+                }
+                conlaisaukhimua=soLuongCon-soluongMua;
+                System.out.println(conlaisaukhimua);
+                String sqlXoaNPP="update SanPham set TonKho= "+conlaisaukhimua+" where MaSanPham ='"+maSanPham+"'";
+                connectionClass.ExcuteQueryUpdateDB(sqlXoaNPP);
+            }
+            catch (Exception ex){}
+
+        }
+
+    }
+
+    public boolean  SHD_HopLe_LucThem(){
+        String SHD= txtMaHoaDonHD.getText();
+        try {
+            ResultSet rs = kncsdl.Tim_SoHoaDon(SHD);
+            //System.out.println(rs);
+            boolean HopLe  =!SHD.equals("");;
+            while (rs.next()){
+                HopLe = false;
+            }
+            // System.out.println("So hoa don hop le "+HopLe);
+            return HopLe;
+        } catch (Exception e)
+        {
+            System.out.println("loi SHD_HopLe_LucThem "+e);
+            return false;
+        }
+    }
+
+    public void TaoMoi(){
+        if(nRowsCT>0) {
+            gridPane.getChildren().clear();
+            txtSTTList.clear();
+            txtMSMatHangList.clear();
+            txtTenMatHangList.clear();
+            txtSoLuongList.clear();
+            txtDonGiaList.clear();
+            txtTriGiaList.clear();
+            nRowsCT=0;
+            try {
+                int SoHoaDon = 0;
+                ConnectionClass connectionClass = new ConnectionClass();
+                String sql="SELECT MAX(MaHoaDon) FROM HoaDon";
+                ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+                listKhachHang = new ArrayList<KhachHang>();
+                while(rs.next()) {
+                    SoHoaDon=rs.getInt(1);
+                }
+                SoHoaDon+=1;
+                txtMaHoaDonHD.setText(""+SoHoaDon);
+
+            }
+            catch (Exception ex){
+                System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
+            }
+            btnTaoMoiHD.setDisable(true);
+            btnThemChiTietHD.setDisable(false);
+            TriGia_Change(); // Lệnh mới thêm (30/09/2017)
+        }
+
+    }
+
+    public void  KiemTraNhanVien() throws SQLException {
+        ConnectionClass connectionClass=new ConnectionClass();
+        //listTenMA = FXCollections.observableArrayList();
+        System.out.println("user là: "+userDangNhap);
+        String sqlChucVuNhanVien="select* from NhanVien, Users where Users.MaNhanVien=NhanVien.MaNhanVien and  Users.TenDangNhap='"+userDangNhap+"'";
+        ResultSet rs= connectionClass.ExcuteQueryGetTable(sqlChucVuNhanVien);
+        // System.out.println(rs.next());
+        while (rs.next()){
+            tenUser=rs.getString("TenNhanVien");
+            idUser=rs.getString("MaNhanVien");
+        }
+        System.out.println("ten Nhan Vien: "+ tenUser);
+        System.out.println("ma Nhan Vien: "+idUser);
+        System.out.println("Quyen La "+ quyentc);
+        txtMaNhanVienHD.setText(idUser);
+        txtNhanVienHD.setText(tenUser);
+        if(quyentc==1){
+            tabHoaDon.setDisable(false);
+            tabSanPham.setDisable(false);
+            tabKhachHang.setDisable(false);
+            tabNhanVien.setDisable(false);
+            tabDoiTac.setDisable(false);
+            tabDoanhThu.setDisable(false);
+            btnMoQuyen.setVisible(false);
+            tabTrangChu.setDisable(true);
+        }else if(quyentc==2){
+            tabHoaDon.setDisable(false);
+            tabSanPham.setDisable(false);
+            tabKhachHang.setDisable(false);
+            tabNhanVien.setDisable(false);
+            tabDoiTac.setDisable(false);
+            tabDoanhThu.setDisable(false);
+            btnMoQuyen.setVisible(false);
+            tabTrangChu.setDisable(true);
+            tabTaiKhoan.setDisable(true);
+
+        }
+        else if(quyentc==3){
+            tabHoaDon.setDisable(false);
+            tabSanPham.setDisable(false);
+            tabKhachHang.setDisable(false);
+            tabDoiTac.setDisable(false);
+            btnMoQuyen.setVisible(false);
+            tabTrangChu.setDisable(true);
+            tabTaiKhoan.setDisable(true);
+        }
+        else if(quyentc==4){
+            tabNhanVien.setDisable(false);
+            tabTaiKhoan.setDisable(true);
+            btnThemNhanVien.setVisible(false);
+            btnXoaNhanVien.setVisible(false);
+            btnSuaNhanVien.setVisible(false);
+            btnReSetNhanVien.setVisible(false);
+        }
+        else if(quyentc==5){
+            tabSanPham.setDisable(false);
+            tabKhachHang.setDisable(false);
+            btnThemSP.setVisible(false);
+            btnSuaSP.setVisible(false);
+            btnXoaSP.setVisible(false);
+            btnResetSP.setVisible(false);
+            btnDoiHinh.setVisible(false);
+            btnXoaHinh.setVisible(false);
+            btnXemSPAn.setVisible(false);
+
+            btnAnTatCaSanPhamHH.setVisible(false);
+            btnAnSanPhamHH.setVisible(false);
+            btnReSetLSP.setVisible(false);
+            btnXoaLSP.setVisible(false);
+            btnSuaLSP.setVisible(false);
+            btnThemLSP.setVisible(false);
+
+            ptnThemKH.setVisible(false);
+            btnXoaKH.setVisible(false);
+            btnSuaKH.setVisible(false);
+            btnResetKH.setVisible(false);
+
+        }
+        else if(quyentc==6){
+            tabHoaDon.setDisable(false);
+            tabSanPham.setDisable(false);
+            tabKhachHang.setDisable(false);
+            tabNhanVien.setDisable(false);
+            tabDoiTac.setDisable(false);
+            tabDoanhThu.setDisable(false);
+            btnMoQuyen.setVisible(false);
+            tabTrangChu.setDisable(true);
+            tabTaiKhoan.setDisable(true);
+        }
+    }
+
+
     @FXML
-    public void initialize() { //khởi tạo
+    public void initialize() throws SQLException { //khởi tạo
     fileChooser=new FileChooser();
     fileChooser.getExtensionFilters().addAll(
             new FileChooser.ExtensionFilter("All file","* *"),
             new FileChooser.ExtensionFilter("Images","* png","* jpg","* gif"),
-            new FileChooser.ExtensionFilter("Text File","* txt")
-    );
+            new FileChooser.ExtensionFilter("Text File","* txt"));
+            gridPane =new GridPane();
+            scrollPaneHD.setContent(gridPane);
+            scrollPaneHD.setVvalue(1);
+        cboMaKhachHangHD.setValue("32");
+        cboMaMatHangCTHD=new ComboBox<>();
+        cboMaMatHangCTHD.setMinWidth(240);
+        cboTenMHCTHD=new ComboBox<>();
+        cboTenMHCTHD.setMinWidth(240);
+        dateNgayLApHD.setValue(LocalDate.now());
+        cboKhacHangClick();
+        TruyenKhachHang();
+        TruyenMAMH();
+        TruyenTenMH();
+        btnTaoMoiHD.setDisable(true);
+        btnLuuHD.setDisable(true);
+        btnXoaChiTietHD.setDisable(true);
 
+
+        try {
+            int SoHoaDon = 0;
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="SELECT MAX(MaHoaDon) FROM HoaDon";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            listKhachHang = new ArrayList<KhachHang>();
+            while(rs.next()) {
+                SoHoaDon=rs.getInt(1);
+            }
+            SoHoaDon+=1;
+            txtMaHoaDonHD.setText(""+SoHoaDon);
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
+        }
+        tabHoaDon.setDisable(true);
+        tabSanPham.setDisable(true);
+        tabKhachHang.setDisable(true);
+        tabNhanVien.setDisable(true);
+        tabDoiTac.setDisable(true);
+        tabDoanhThu.setDisable(true);
     }
-    public void tabDoiTacClick(Event event) {
+    public void tabDoiTacClick(Event event) throws SQLException {
         getTableNPP();
+
     }
 
     public void btnThemNPPClick(ActionEvent actionEvent) throws SQLException {
@@ -1704,6 +2519,7 @@ public class ControllerTrangChu {
     public void tabLoaiSanPhamClick(Event event) {
         getTableLoaiSP();
         getTableSanPhamHH();
+
     }
 
     public void tblLoaiSPClick(MouseEvent mouseEvent) {
@@ -1793,7 +2609,7 @@ public class ControllerTrangChu {
         }
         catch (Exception e){
             System.out.println(""+e);
-            // e.printStackTrace();
+
         }
     }
 
@@ -1840,5 +2656,78 @@ public class ControllerTrangChu {
        catch (Exception e){
            ThongBao("Vui lòng chọn sản phẩm","Thông báo",2);
        }
+    }
+
+    public void tabHoaDonClick(Event event) throws SQLException {
+
+    }
+
+    public void btnTaoMoiHDClick(ActionEvent actionEvent) {
+        TaoMoi();
+    }
+
+    public void btnThemChiTietHDClick(ActionEvent actionEvent) {
+        ThemChiTietHD();
+    }
+
+    public void btnXoaChiTietHDClick(ActionEvent actionEvent) {
+        XoaChiTietHoaDon();
+        TriGia_Change();
+    }
+
+    public void btnLuuHDClick(ActionEvent actionEvent) {
+        Luu_ToanBo();
+    }
+
+    public void cboMaKhachHangHDClick(ActionEvent actionEvent) {
+        cboKhacHangClick();
+    }
+
+    public void tblBangHoaDonClick(MouseEvent mouseEvent) throws SQLException {
+        int index=tblBangHoaDon.getSelectionModel().getSelectedIndex();
+        getDaTaHoaDon(index);
+
+    }
+
+    public void btnSuaXHDClick(ActionEvent actionEvent) throws SQLException {
+        suaThongTinHoaDon();
+    }
+
+    public void btnReSetXHDClick(ActionEvent actionEvent) throws SQLException {
+        setMacDinhHoaDon();
+    }
+
+    public void TimHoaDonClick(ActionEvent actionEvent) throws SQLException {
+        TimHoaDon();
+    }
+
+    public void tabXemHoaDonClick(Event event) throws SQLException {
+        getTableHoaDon();
+        TruyenTenNhanVien();
+        TruyenTenKhachHang();
+        dateTimXHD.setValue(LocalDate.now());
+    }
+
+    public void butonTheMKhachHangHDClick(ActionEvent actionEvent) {
+
+        Stage stage=new Stage();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("../view/frmThemKhachHang.fxml"));
+            Scene scene=new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            // stage.setAlwaysOnTop(true);
+        }
+        catch (Exception e){
+            System.out.println(""+e);
+
+        }
+    }
+
+    public void tabDoanhThuClick(Event event) {
+    }
+
+    public void btnMoQuyenClick(ActionEvent actionEvent) throws SQLException {
+        KiemTraNhanVien();
     }
 }

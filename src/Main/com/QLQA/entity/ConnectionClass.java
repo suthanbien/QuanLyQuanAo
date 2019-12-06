@@ -6,14 +6,14 @@ public class ConnectionClass {
     private Connection connection;
     public ConnectionClass() {
         // tạo chuỗi kết nối qua SQL
-        String connectionString="jdbc:sqlserver://localhost\\QUYSEVER;database=QuanLySanPham;user=sa;password=Quy0164vn";
+        String connectionString="jdbc:sqlserver://localhost\\QUY;database=QuanLySanPham;user=sa;password=Quy0164vn";
         try{  //thử nếu không lỗi
             connection= DriverManager.getConnection(connectionString);  //mở kết nối
-            System.out.println("Kết Nối Thành Công");
+            //System.out.println("Kết Nối Thành Công");
         }
         catch (Exception ex) //thử bị lỗi
         {
-            System.out.println("Lỗi sai jdbc: "+ex );  //in lỗi
+           // System.out.println("Lỗi sai jdbc: "+ex );  //in lỗi
         }
     }
 
@@ -78,5 +78,37 @@ public class ConnectionClass {
     private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
         JOptionPane.showMessageDialog(new JFrame(), noiDungThongBao,
                 tieuDeThongBao, icon);
+    }
+    public ResultSet Tim_MSSanPham(String msSanPham) throws SQLException {
+        Statement stmt =connection.createStatement();
+        String sql="select * from SanPham where MaSanPham="+msSanPham;
+        ResultSet rs= stmt.executeQuery(sql);
+        return rs;
+    }
+    public ResultSet Tim_TenSanPham(String tenSanPham) throws SQLException {
+        Statement stmt =connection.createStatement();
+        String sql="select * from SanPham where TenSanPham=N'"+tenSanPham+"'";
+        ResultSet rs= stmt.executeQuery(sql);
+        return rs;
+    }
+    public void Them_HoaDon(String maKhachHang, String maNhanVien, String ngay,float TongGia) throws SQLException {
+        Statement stmt =connection.createStatement();
+        String sql= " insert into HoaDon values ("+maKhachHang+","+maNhanVien+",'"+ngay+"',"+TongGia+",'')";
+        //System.out.println(sql);
+        stmt.executeUpdate(sql);
+    }
+    public void Them_ChiTietHoaDon(String maHD, String maSP, float sl, float tongTien) throws SQLException {
+        Statement stmt =connection.createStatement();
+        String sql= " insert into ChiTietHoaDon values ("+maHD+","+maSP+","+sl+","+tongTien+",'')";
+        //System.out.println(sql);
+        stmt.executeUpdate(sql);
+    }
+
+    public ResultSet Tim_SoHoaDon(String shd) throws SQLException {
+        Statement stmt =connection.createStatement();
+        String sql="select MaHoaDon from HoaDon where MaHoaDon='" +shd+"'"   ;
+        ResultSet rs= null;
+        rs=  stmt.executeQuery(sql);
+        return rs;
     }
 }
