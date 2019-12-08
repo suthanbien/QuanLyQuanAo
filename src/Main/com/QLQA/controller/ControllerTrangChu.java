@@ -10,9 +10,9 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -21,10 +21,8 @@ import javafx.scene.input.MouseEvent;
 import javax.swing.*;
 import java.io.*;
 import java.net.MalformedURLException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -231,6 +229,20 @@ public class ControllerTrangChu {
     public Button btnMoQuyen;
     public Tab tabNhanVien;
     public Tab tabTrangChu;
+    public DatePicker TKTuNgay;
+    public DatePicker TKDenNgay;
+    public Button btnTKTop10;
+    public Button btnInBaoCao;
+
+    public CategoryAxis bcSanPham;
+    public BarChart bcThongKe;
+    public NumberAxis bcSoLuong;
+    public TableView tbThongKe;
+    public TableColumn colMaSPTK;
+    public TableColumn colTenSPTK;
+    public TableColumn colSLBanTK;
+    public TableColumn colTongTienTK;
+    public Button btnResetThongKe;
     ConnectionClass kncsdl=new ConnectionClass();
     ComboBox<String> cboMaMatHangCTHD;
     ComboBox<String> cboTenMHCTHD;
@@ -244,7 +256,6 @@ public class ControllerTrangChu {
     List<TextField> txtTriGiaList=new ArrayList();
     String MSKH_Luu="";
     String MSMH_Luu="";
-
     String maNhanVienUser="";
     int rowDangChonCTHoaDon=-1;
 
@@ -265,6 +276,7 @@ public class ControllerTrangChu {
     ArrayList<SanPham> listSanPham;
     ArrayList<HoaDon> listHoaDon;
     ArrayList<ChiTietHoaDon> listChiTietHoaDon;
+    ArrayList<ThongKe> listThongKe;
 
     //Tạo list Cho Combobox
     private ObservableList lisLoaiKhachHang;
@@ -491,6 +503,41 @@ public class ControllerTrangChu {
         }
     }
 
+    private void getTableSanPhamTK(){
+        setCellTableThongKe();
+        bcThongKe.getData().clear();
+        String strTuNgay="",strDenNgay="";
+        strTuNgay=TKTuNgay.getValue().toString();
+        strDenNgay=TKDenNgay.getValue().toString();
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="SELECT Top (10) SanPham.MaSanPham ,TenSanPham,SUM(SoLuong) as 'TongSoLuong',sum(ChiTietHoaDon.TongTien)as'TongSoTien' " +
+                    " FROM ChiTietHoaDon ,SanPham ,HoaDon" +
+                    " where  ChiTietHoaDon.MaSanPham=SanPham.MaSanPham and ChiTietHoaDon.MaHoaDon=HoaDon.MaHoaDon  " +
+                    " and HoaDon.NgayLapHoaDon >= '"+strTuNgay+"'" +
+                    " AND HoaDon.NgayLapHoaDon  <= '"+strDenNgay+"'" +
+                    " GROUP BY TenSanPham , SanPham.MaSanPham" +
+                    " ORDER BY TongSoLuong DESC";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            listThongKe = new ArrayList<ThongKe>();
+            while(rs.next()) {
+                ThongKe dataThongKe= new ThongKe(rs.getInt(1),
+                        rs.getString(2),rs.getInt(3),
+                        rs.getInt(4));
+                listThongKe.add(dataThongKe);
+                XYChart.Series set1=new XYChart.Series<>();
+                set1.getData().add(new XYChart.Data(rs.getString(2),rs.getInt(3)));
+                bcThongKe.getData().addAll(set1);
+            }
+            tbThongKe.getItems().clear();
+            tbThongKe.getItems().addAll(listThongKe);
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin khách hàng"+ex);
+        }
+    }
+
     //set vị trí của các cột trong bảng
     private void setCellTableNPP(){
         columMaNPP.setCellValueFactory(new PropertyValueFactory<>("maNhaPhanPhoi"));
@@ -575,6 +622,14 @@ public class ControllerTrangChu {
         colSoLuongCTHD.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
         colTongTienCTHD.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
         colGhiChuCTHD.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
+    }
+
+    private void setCellTableThongKe(){
+        colMaSPTK.setCellValueFactory(new PropertyValueFactory<>("maSanPham"));
+        colTenSPTK.setCellValueFactory(new PropertyValueFactory<>("tenSanPham"));
+        colSLBanTK.setCellValueFactory(new PropertyValueFactory<>("soLuongBan"));
+        colTongTienTK.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
+
     }
 
 
@@ -1261,16 +1316,21 @@ public class ControllerTrangChu {
             numMaNhanVien=rs2.getInt(1);
         }
 
-        if(ThongBaoDelete("Bạn muốn sửa Tài Khoản: "+strUser)==true){
-            if(strIDTK.length()==0){
-                ThongBao("Vui lòng chọn Tài Khoản: ", "Thông Báo", 2);
-            }else {
-                String sqlSuaTaiKhoan="update Users set MaNhanVien="+numMaNhanVien+",TenDangNhap=N'"+strUser+"',Password=N'"
-                        +strPass+"',Quyen="+numQuyen+",ChuThich=N'"+strChuThich+"' where ID= "+strIDTK+"";
-                connectionClass.ExcuteQueryUpdateDB(sqlSuaTaiKhoan);
-                getTableTaiKhoan();
-                setMacDinhTaiKhoan();
-                ThongBao("Cập nhật Thành Công tài khoản: "+strUser, "Thông Báo", 2);
+        if(strIDTK.equals("1")){
+            ThongBaoDelete("Bạn Không thể sửa tài khoản admin với bất kỳ quyền nào");
+        }else
+        {
+            if(ThongBaoDelete("Bạn muốn sửa Tài Khoản: "+strUser)==true){
+                if(strIDTK.length()==0){
+                    ThongBao("Vui lòng chọn Tài Khoản: ", "Thông Báo", 2);
+                }else {
+                    String sqlSuaTaiKhoan="update Users set MaNhanVien="+numMaNhanVien+",TenDangNhap=N'"+strUser+"',Password=N'"
+                            +strPass+"',Quyen="+numQuyen+",ChuThich=N'"+strChuThich+"' where ID= "+strIDTK+"";
+                    connectionClass.ExcuteQueryUpdateDB(sqlSuaTaiKhoan);
+                    getTableTaiKhoan();
+                    setMacDinhTaiKhoan();
+                    ThongBao("Cập nhật Thành Công tài khoản: "+strUser, "Thông Báo", 2);
+                }
             }
         }
     }
@@ -1605,6 +1665,36 @@ public class ControllerTrangChu {
 
     }
 
+    private void getDaTaThongKe(int index) throws SQLException {
+        ThongKe thongKe= (ThongKe) tbThongKe.getItems().get(index);
+        bcThongKe.getData().clear();
+        String strTuNgay="",strDenNgay="";
+        strTuNgay=TKTuNgay.getValue().toString();
+        strDenNgay=TKDenNgay.getValue().toString();
+        String strMaSP=""+thongKe.getMaSanPham();
+
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="SELECT Top (10) SanPham.MaSanPham ,TenSanPham,SUM(SoLuong) as 'TongSoLuong',sum(ChiTietHoaDon.TongTien)as'TongSoTien' " +
+                    " FROM ChiTietHoaDon ,SanPham ,HoaDon" +
+                    " where  ChiTietHoaDon.MaSanPham=SanPham.MaSanPham and ChiTietHoaDon.MaHoaDon=HoaDon.MaHoaDon  " +
+                    " and HoaDon.NgayLapHoaDon >= '"+strTuNgay+"'" +
+                    " AND HoaDon.NgayLapHoaDon  <= '"+strDenNgay+"'" +
+                    " and ChiTietHoaDon.MaSanPham= '"+strMaSP+"'" +
+                    " GROUP BY TenSanPham , SanPham.MaSanPham" +
+                    " ORDER BY TongSoLuong DESC";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+            while(rs.next()) {
+                XYChart.Series set1=new XYChart.Series<>();
+                set1.getData().add(new XYChart.Data(rs.getString(2),rs.getInt(3)));
+                bcThongKe.getData().addAll(set1);
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin"+ex);
+        }
+    }
+
     // Chức năng tìm kiếm
     private void TimKhachHang() throws SQLException {
         String strTenKH=txtTimTenKH.getText();
@@ -1891,6 +1981,60 @@ public class ControllerTrangChu {
         scrollPaneHD.setVvalue(1);
 
         Kiem_Hop_Le();
+    }
+
+    //Set top 10 san pham ban chay cho barchar
+    public void setTop10TB(){
+        bcThongKe.getData().clear();
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="SELECT Top (10)TenSanPham, SUM(SoLuong) as 'TongSoLuong',"+
+                    "sum(TongTien)as'TongSoTien' FROM ChiTietHoaDon ,SanPham where"+
+                    "  ChiTietHoaDon.MaSanPham=SanPham.MaSanPham GROUP BY TenSanPham "+
+                    "ORDER BY TongSoLuong DESC";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+
+            while(rs.next()) {
+                XYChart.Series set1=new XYChart.Series<>();
+                set1.getData().add(new XYChart.Data(rs.getString(1),rs.getInt(2)));
+                bcThongKe.getData().addAll(set1);
+            }
+
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin"+ex);
+        }
+btnInBaoCao.setDisable(true);
+    }
+    public void setTop10ChonNgay(){
+        bcThongKe.getData().clear();
+        String strTuNgay="",strDenNgay="";
+        strTuNgay=TKTuNgay.getValue().toString();
+        strDenNgay=TKDenNgay.getValue().toString();
+        try {
+            ConnectionClass connectionClass = new ConnectionClass();
+            String sql="SELECT Top (10)TenSanPham, SUM(SoLuong) as 'TongSoLuong',sum(ChiTietHoaDon.TongTien)as'TongSoTien' " +
+                    " FROM ChiTietHoaDon ,SanPham ,HoaDon" +
+                    " where  ChiTietHoaDon.MaSanPham=SanPham.MaSanPham and ChiTietHoaDon.MaHoaDon=HoaDon.MaHoaDon  " +
+                    " and HoaDon.NgayLapHoaDon >= '"+strTuNgay+"'" +
+                    " AND HoaDon.NgayLapHoaDon  <= '"+strDenNgay+"'" +
+                    " GROUP BY TenSanPham " +
+                    " ORDER BY TongSoLuong DESC";
+            ResultSet rs= connectionClass.ExcuteQueryGetTable(sql);
+
+            while(rs.next()) {
+                XYChart.Series set1=new XYChart.Series<>();
+                set1.getData().add(new XYChart.Data(rs.getString(1),rs.getInt(2)));
+                bcThongKe.getData().addAll(set1);
+            }
+
+
+        }
+        catch (Exception ex){
+            System.out.println("Kiem Tra Lại Thong Tin"+ex);
+        }
+
     }
 
     // Click
@@ -2306,7 +2450,7 @@ public class ControllerTrangChu {
             btnResetKH.setVisible(false);
 
         }
-        else if(quyentc==6){
+        else if(quyentc==7){
             tabHoaDon.setDisable(false);
             tabSanPham.setDisable(false);
             tabKhachHang.setDisable(false);
@@ -2336,6 +2480,8 @@ public class ControllerTrangChu {
         cboTenMHCTHD=new ComboBox<>();
         cboTenMHCTHD.setMinWidth(240);
         dateNgayLApHD.setValue(LocalDate.now());
+        TKTuNgay.setValue(LocalDate.now());
+        TKDenNgay.setValue(LocalDate.now());
         cboKhacHangClick();
         TruyenKhachHang();
         TruyenMAMH();
@@ -2367,6 +2513,8 @@ public class ControllerTrangChu {
         tabNhanVien.setDisable(true);
         tabDoiTac.setDisable(true);
         tabDoanhThu.setDisable(true);
+        setTop10TB();
+
     }
     public void tabDoiTacClick(Event event) throws SQLException {
         getTableNPP();
@@ -2725,9 +2873,36 @@ public class ControllerTrangChu {
     }
 
     public void tabDoanhThuClick(Event event) {
+        setTop10TB();
     }
 
     public void btnMoQuyenClick(ActionEvent actionEvent) throws SQLException {
         KiemTraNhanVien();
+    }
+
+    public void btnTKTop10Click(ActionEvent actionEvent) {
+        setTop10ChonNgay();
+        btnInBaoCao.setDisable(false);
+    }
+
+    public void btnInClick(ActionEvent actionEvent) {
+    }
+
+
+    public void tbThongKeClick(MouseEvent tableViewSortEvent) throws SQLException {
+        int index=tbThongKe.getSelectionModel().getSelectedIndex();
+        getDaTaThongKe(index);
+    }
+
+
+    public void btnResetThongKeClick(ActionEvent actionEvent) {
+        setTop10TB();
+        tbThongKe.getItems().clear();
+        btnInBaoCao.setDisable(true);
+    }
+
+    public void btnChonNgayClick(ActionEvent actionEvent) {
+        getTableSanPhamTK();
+        btnInBaoCao.setDisable(false);
     }
 }

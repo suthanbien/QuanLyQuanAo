@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -906,9 +909,59 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="tabDoanhThu" onSelectionChanged="#tabDoanhThuClick" text="Doanh Thu">
+                  <Tab fx:id="tabDoanhThu" onSelectionChanged="#tabDoanhThuClick" text="Thống Kê">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <DatePicker fx:id="TKTuNgay" layoutX="1027.0" layoutY="109.0" onAction="#btnChonNgayClick" />
+                              <DatePicker fx:id="TKDenNgay" layoutX="1311.0" layoutY="109.0" onAction="#btnChonNgayClick" />
+                              <Button fx:id="btnTKTop10" layoutX="1204.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnTKTop10Click" prefHeight="11.0" prefWidth="113.0" text="Top 10">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnInBaoCao" layoutX="1187.0" layoutY="685.0" mnemonicParsing="false" onAction="#btnInClick" prefHeight="55.0" prefWidth="195.0" text="In Báo Cáo">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="636.0" layoutY="23.0" text="Thống Kê" textFill="#301864">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1078.0" layoutY="69.0" text="Từ Ngày">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1356.0" layoutY="69.0" text="Đến Ngày">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <BarChart fx:id="bcThongKe" layoutX="14.0" layoutY="80.0" prefHeight="645.0" prefWidth="987.0" title="Biểu Đồ Thống Kê">
+                                <xAxis>
+                                  <CategoryAxis fx:id="bcSanPham" label="Sản Phẩm" side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="bcSoLuong" label="Số Lượng" side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                              <TableView fx:id="tbThongKe" layoutX="1024.0" layoutY="293.0" onMouseClicked="#tbThongKeClick" prefHeight="382.0" prefWidth="474.0">
+                                <columns>
+                                  <TableColumn fx:id="colMaSPTK" prefWidth="60.79998779296875" text="Mã SP" />
+                                  <TableColumn fx:id="colTenSPTK" prefWidth="174.400146484375" text="Tên" />
+                                    <TableColumn fx:id="colSLBanTK" prefWidth="103.9998779296875" text="SL Bán" />
+                                    <TableColumn fx:id="colTongTienTK" prefWidth="136.800048828125" text="Tổng Tiền" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="btnResetThongKe" layoutX="1197.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnResetThongKeClick" prefHeight="40.0" prefWidth="127.0" text="Clear">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                   <Tab fx:id="tabDoiTac" onSelectionChanged="#tabDoiTacClick" text="Đối Tác">
