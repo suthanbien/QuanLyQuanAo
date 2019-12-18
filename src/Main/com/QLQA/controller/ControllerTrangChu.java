@@ -243,6 +243,8 @@ public class ControllerTrangChu {
     public TableColumn colSLBanTK;
     public TableColumn colTongTienTK;
     public Button btnResetThongKe;
+    public ImageView imgOKhoa;
+    public Label lbMoQuyen;
     ConnectionClass kncsdl=new ConnectionClass();
     ComboBox<String> cboMaMatHangCTHD;
     ComboBox<String> cboTenMHCTHD;
@@ -264,6 +266,7 @@ public class ControllerTrangChu {
     private File file;
     private Image image;
     private Image imageno=new Image("file:khongcoanh.png");
+
     private Stage stage;
     private String diachianh="NULL";
 
@@ -2395,7 +2398,7 @@ btnInBaoCao.setDisable(true);
             tabNhanVien.setDisable(false);
             tabDoiTac.setDisable(false);
             tabDoanhThu.setDisable(false);
-            btnMoQuyen.setVisible(false);
+            btnMoQuyen.setDisable(true);
             tabTrangChu.setDisable(true);
         }else if(quyentc==2){
             tabHoaDon.setDisable(false);

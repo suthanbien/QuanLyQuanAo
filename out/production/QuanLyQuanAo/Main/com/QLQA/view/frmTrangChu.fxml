@@ -17,6 +17,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -35,11 +36,33 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="btnMoQuyen" layoutX="433.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnMoQuyenClick" prefHeight="126.0" prefWidth="310.0" text="Mở Quyền">
+                              <ImageView fitHeight="775.0" fitWidth="1505.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../image/10.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnMoQuyen" layoutX="588.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnMoQuyenClick" prefHeight="316.0" prefWidth="370.0" style="-fx-background-color: null;">
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fx:id="imgOKhoa" fitHeight="263.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/11.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
+                              <Label fx:id="lbMoQuyen" layoutX="617.0" layoutY="291.0" text="Mở Quyền" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="64.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="371.0" layoutY="172.0" prefHeight="118.0" prefWidth="805.0" text="Quản Lý Bán Quần Áo" textFill="#f23838">
+                                 <font>
+                                    <Font name="Cambria Bold" size="80.0" />
+                                 </font>
+                              </Label>
                            </children></AnchorPane>
                      </content>
                   </Tab>
@@ -51,66 +74,73 @@
                                  <tabs>
                                     <Tab text="Hóa Đơn">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <BorderPane fx:id="boderPaneHD" layoutX="83.0" layoutY="130.0" prefHeight="769.6" prefWidth="1469.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <top>
                                                       <Pane prefHeight="253.0" prefWidth="1470.0" BorderPane.alignment="CENTER">
                                                          <children>
-                                                            <Label layoutX="933.0" layoutY="86.0" text="Khách Hàng">
+                                                            <Label layoutX="933.0" layoutY="86.0" text="Khách Hàng" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="567.0" layoutY="153.0" text="Địa Chỉ">
+                                                            <Label layoutX="567.0" layoutY="153.0" text="Địa Chỉ" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="567.0" layoutY="208.0" text="Nhân Viên">
+                                                            <Label layoutX="567.0" layoutY="208.0" text="Nhân Viên" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="126.0" layoutY="149.0" text="SDT">
+                                                            <Label layoutX="126.0" layoutY="149.0" text="SDT" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="126.0" layoutY="204.0" text="Mã Nhân Viên">
+                                                            <Label layoutX="126.0" layoutY="204.0" text="Mã Nhân Viên" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="933.0" layoutY="149.0" text="Ngày lập">
+                                                            <Label layoutX="959.0" layoutY="149.0" text="Ngày lập" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="567.0" layoutY="90.0" text="Mã Khách Hàng">
+                                                            <Label layoutX="567.0" layoutY="90.0" text="Mã Khách Hàng" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Button fx:id="butonTheMKhachHangHD" layoutX="1223.0" layoutY="124.0" mnemonicParsing="false" onAction="#butonTheMKhachHangHDClick" prefHeight="76.0" prefWidth="190.0" text="Thêm khách Hàng ">
+                                                            <Button fx:id="butonTheMKhachHangHD" layoutX="1249.0" layoutY="86.0" mnemonicParsing="false" onAction="#butonTheMKhachHangHDClick" prefHeight="78.0" prefWidth="61.0" style="-fx-background-color: null;">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
+                                                               <graphic>
+                                                                  <ImageView fitHeight="69.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../../../image/13.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
                                                             </Button>
-                                                            <Label layoutX="634.0" prefHeight="53.0" prefWidth="150.0" text="Hóa Đơn" textFill="#ff0404">
+                                                            <Label layoutX="623.0" prefHeight="70.0" prefWidth="224.0" text="Hóa Đơn" textFill="#ff0404">
                                                                <font>
-                                                                  <Font name="System Bold" size="36.0" />
+                                                                  <Font name="System Bold" size="48.0" />
                                                                </font>
                                                             </Label>
-                                                            <ComboBox fx:id="cboMaKhachHangHD" layoutX="724.0" layoutY="91.0" onAction="#cboMaKhachHangHDClick" prefWidth="150.0" />
-                                                            <TextField fx:id="txtMaNhanVienHD" editable="false" layoutX="305.0" layoutY="205.0" text="26" />
-                                                            <TextField fx:id="txtSDTKhachHangHD" editable="false" layoutX="305.0" layoutY="138.0" />
-                                                            <TextField fx:id="txtDiaChiKHHD" editable="false" layoutX="725.0" layoutY="155.0" />
-                                                            <TextField fx:id="txtNhanVienHD" editable="false" layoutX="725.0" layoutY="209.0" text="New" />
-                                                            <DatePicker fx:id="dateNgayLApHD" editable="false" layoutX="1017.0" layoutY="151.0" />
-                                                            <TextField fx:id="txtTenkhachHangHD" editable="false" layoutX="1044.0" layoutY="87.0" />
-                                                            <TextField fx:id="txtMaHoaDonHD" editable="false" layoutX="305.0" layoutY="87.0" />
-                                                            <Label layoutX="126.0" layoutY="86.0" text="Mã Hóa Đơn">
+                                                            <ComboBox fx:id="cboMaKhachHangHD" layoutX="724.0" layoutY="91.0" onAction="#cboMaKhachHangHDClick" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                                            <TextField fx:id="txtMaNhanVienHD" editable="false" layoutX="305.0" layoutY="205.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" text="26" />
+                                                            <TextField fx:id="txtSDTKhachHangHD" editable="false" layoutX="305.0" layoutY="138.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                            <TextField fx:id="txtDiaChiKHHD" editable="false" layoutX="725.0" layoutY="155.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                            <TextField fx:id="txtNhanVienHD" editable="false" layoutX="725.0" layoutY="209.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" text="New" />
+                                                            <DatePicker fx:id="dateNgayLApHD" editable="false" layoutX="1043.0" layoutY="151.0" prefHeight="18.0" prefWidth="152.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                                                            <TextField fx:id="txtTenkhachHangHD" editable="false" layoutX="1044.0" layoutY="87.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                            <TextField fx:id="txtMaHoaDonHD" editable="false" layoutX="305.0" layoutY="87.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                            <Label layoutX="126.0" layoutY="86.0" text="Mã Hóa Đơn" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
@@ -122,22 +152,22 @@
                                                    <bottom>
                                                       <Pane prefHeight="118.0" prefWidth="1470.0" BorderPane.alignment="CENTER">
                                                          <children>
-                                                            <Button fx:id="btnTaoMoiHD" layoutX="84.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnTaoMoiHDClick" prefHeight="50.0" prefWidth="150.0" text="Tạo Mới">
+                                                            <Button fx:id="btnTaoMoiHD" layoutX="84.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnTaoMoiHDClick" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #EF6C15; -fx-background-radius: 20;" text="Tạo Mới" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Button>
-                                                            <Button fx:id="btnThemChiTietHD" layoutX="463.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnThemChiTietHDClick" prefHeight="50.0" prefWidth="150.0" text="Thêm Chi Tiết">
+                                                            <Button fx:id="btnThemChiTietHD" layoutX="463.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnThemChiTietHDClick" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #EF6C15; -fx-background-radius: 20;" text="Thêm Chi Tiết" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Button>
-                                                            <Button fx:id="btnXoaChiTietHD" layoutX="864.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnXoaChiTietHDClick" prefHeight="50.0" prefWidth="150.0" text="Xóa Chi Tiết">
+                                                            <Button fx:id="btnXoaChiTietHD" layoutX="864.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnXoaChiTietHDClick" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #EF6C15; -fx-background-radius: 20;" text="Xóa Chi Tiết" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Button>
-                                                            <Button fx:id="btnLuuHD" layoutX="1204.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnLuuHDClick" prefHeight="50.0" prefWidth="150.0" text="Lưu">
+                                                            <Button fx:id="btnLuuHD" layoutX="1204.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnLuuHDClick" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #EF6C15; -fx-background-radius: 20;" text="Lưu" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
@@ -152,32 +182,32 @@
                                                                <children>
                                                                   <HBox prefHeight="47.0" prefWidth="1458.0">
                                                                      <children>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="STT">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="STT" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Mã Sản Phẩm">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Mã Sản Phẩm" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Tên Sản Phẩm">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Tên Sản Phẩm" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Số Lượng">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Số Lượng" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Đơn Giá">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Đơn Giá" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Trị Giá">
+                                                                        <Label alignment="CENTER" prefWidth="250.0" text="Trị Giá" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
@@ -193,13 +223,13 @@
                                                                   <ScrollPane fx:id="scrollPaneHD" />
                                                                   <HBox alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="1458.0">
                                                                      <children>
-                                                                        <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Tổng Cộng:">
+                                                                        <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Tổng Cộng:" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
                                                                         </Label>
-                                                                        <TextField fx:id="txtTongCongHD" alignment="BOTTOM_RIGHT" editable="false" prefWidth="250.0" text="0" />
-                                                                        <Label prefHeight="27.0" prefWidth="106.0" text="VND">
+                                                                        <TextField fx:id="txtTongCongHD" alignment="BOTTOM_RIGHT" editable="false" prefWidth="250.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" text="0" />
+                                                                        <Label prefHeight="27.0" prefWidth="106.0" text="VND" textFill="WHITE">
                                                                            <font>
                                                                               <Font name="System Bold" size="18.0" />
                                                                            </font>
@@ -218,7 +248,7 @@
                                     </Tab>
                                     <Tab fx:id="tabXemHoaDon" onSelectionChanged="#tabXemHoaDonClick" text="Xem Hóa Đơn">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="823.0">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="823.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <TableView fx:id="tblBangHoaDon" layoutX="13.0" layoutY="59.0" onMouseClicked="#tblBangHoaDonClick" prefHeight="307.0" prefWidth="697.0">
                                                    <columns>
@@ -240,68 +270,68 @@
                                                       <TableColumn fx:id="colGhiChuCTHD" prefWidth="163.20000000000005" text="Ghi Chú" />
                                                    </columns>
                                                 </TableView>
-                                                <Label layoutX="792.0" layoutY="113.0" prefHeight="22.0" prefWidth="109.0" text="Nhân Viên">
+                                                <Label layoutX="792.0" layoutY="113.0" prefHeight="22.0" prefWidth="109.0" text="Nhân Viên" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="792.0" layoutY="214.0" prefHeight="22.0" prefWidth="109.0" text="Ngày Lập">
+                                                <Label layoutX="792.0" layoutY="221.0" prefHeight="22.0" prefWidth="109.0" text="Ngày Lập" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="262.0" layoutY="14.0" prefHeight="35.0" prefWidth="202.0" text="Bảng Hóa Đơn" textFill="#040e29">
+                                                <Label layoutX="262.0" layoutY="14.0" prefHeight="35.0" prefWidth="202.0" text="Bảng Hóa Đơn" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="222.0" layoutY="380.0" prefHeight="35.0" prefWidth="279.0" text="Bảng Chi Tiết Hóa Đơn">
+                                                <Label layoutX="222.0" layoutY="380.0" prefHeight="35.0" prefWidth="279.0" text="Bảng Chi Tiết Hóa Đơn" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="1205.0" layoutY="60.0" prefHeight="22.0" prefWidth="109.0" text="Ghi Chú">
+                                                <Label layoutX="1205.0" layoutY="60.0" prefHeight="22.0" prefWidth="109.0" text="Ghi Chú" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="792.0" layoutY="274.0" prefHeight="22.0" prefWidth="109.0" text="Tổng Tiền">
+                                                <Label layoutX="792.0" layoutY="274.0" prefHeight="22.0" prefWidth="109.0" text="Tổng Tiền" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="792.0" layoutY="159.0" prefHeight="22.0" prefWidth="109.0" text="Khách Hàng">
+                                                <Label layoutX="792.0" layoutY="169.0" prefHeight="22.0" prefWidth="109.0" text="Khách Hàng" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="792.0" layoutY="60.0" prefHeight="22.0" prefWidth="109.0" text="Mã Hóa Đơn">
+                                                <Label layoutX="792.0" layoutY="60.0" prefHeight="22.0" prefWidth="109.0" text="Mã Hóa Đơn" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtMaHoaDonXHD" editable="false" layoutX="960.0" layoutY="63.0" />
-                                                <TextField fx:id="txtTongTienXHD" editable="false" layoutX="960.0" layoutY="278.0" />
-                                                <TextArea fx:id="textGhiChuXHD" layoutX="1205.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" />
-                                                <Button fx:id="btnSuaXHD" layoutX="921.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnSuaXHDClick" prefHeight="50.0" prefWidth="100.0" text="Sửa">
+                                                <TextField fx:id="txtMaHoaDonXHD" editable="false" layoutX="960.0" layoutY="63.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTongTienXHD" editable="false" layoutX="960.0" layoutY="275.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextArea fx:id="textGhiChuXHD" layoutX="1205.0" layoutY="101.0" prefHeight="82.0" prefWidth="209.0" style="-fx-border-color: #0AC9FF;" />
+                                                <Button fx:id="btnSuaXHD" layoutX="931.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnSuaXHDClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 20; -fx-background-color: #EF6C15;" text="Sửa" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnReSetXHD" layoutX="1236.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnReSetXHDClick" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                                                <Button fx:id="btnReSetXHD" layoutX="1215.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnReSetXHDClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 20; -fx-background-color: #EB2528;" text="Reset" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Pane layoutX="748.0" layoutY="447.0" prefHeight="308.0" prefWidth="693.0" style="-fx-border-radius: 20; -fx-border-color: black;">
+                                                <Pane layoutX="748.0" layoutY="447.0" prefHeight="308.0" prefWidth="693.0" style="-fx-border-radius: 20; -fx-border-color: #EF6C15;">
                                                    <children>
-                                                      <TextField fx:id="txtTimTheoMaXHD" layoutX="197.0" layoutY="93.0" prefHeight="25.0" prefWidth="150.0" />
-                                                      <Label layoutX="289.0" layoutY="24.0" text="Tìm Hóa Đơn">
+                                                      <TextField fx:id="txtTimTheoMaXHD" layoutX="197.0" layoutY="93.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                      <Label layoutX="289.0" layoutY="24.0" text="Tìm Hóa Đơn" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <RadioButton fx:id="radTimHDTheoMa" layoutX="45.0" layoutY="92.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Tìm Theo mã">
+                                                      <RadioButton fx:id="radTimHDTheoMa" layoutX="45.0" layoutY="92.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Tìm Theo mã" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="18.0" />
                                                          </font>
@@ -309,34 +339,34 @@
                                                             <ToggleGroup fx:id="TimHoaDonGroup" />
                                                          </toggleGroup>
                                                       </RadioButton>
-                                                      <RadioButton fx:id="radTimHDTheoKhachHang" layoutX="381.0" layoutY="194.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Khách Hàng" toggleGroup="$TimHoaDonGroup">
+                                                      <RadioButton fx:id="radTimHDTheoKhachHang" layoutX="381.0" layoutY="194.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Khách Hàng" textFill="WHITE" toggleGroup="$TimHoaDonGroup">
                                                          <font>
                                                             <Font name="System Bold" size="18.0" />
                                                          </font>
                                                       </RadioButton>
-                                                      <RadioButton fx:id="radTimHDtheoNhanVien" layoutX="45.0" layoutY="194.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Nhân Viên" toggleGroup="$TimHoaDonGroup">
+                                                      <RadioButton fx:id="radTimHDtheoNhanVien" layoutX="45.0" layoutY="194.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Nhân Viên" textFill="WHITE" toggleGroup="$TimHoaDonGroup">
                                                          <font>
                                                             <Font name="System Bold" size="18.0" />
                                                          </font>
                                                       </RadioButton>
-                                                      <RadioButton fx:id="radTimHDTheoNgay" layoutX="381.0" layoutY="92.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Ngày" toggleGroup="$TimHoaDonGroup">
+                                                      <RadioButton fx:id="radTimHDTheoNgay" layoutX="381.0" layoutY="92.0" mnemonicParsing="false" onAction="#TimHoaDonClick" text="Ngày" textFill="WHITE" toggleGroup="$TimHoaDonGroup">
                                                          <font>
                                                             <Font name="System Bold" size="18.0" />
                                                          </font>
                                                       </RadioButton>
-                                                      <DatePicker fx:id="dateTimXHD" layoutX="505.0" layoutY="93.0" onAction="#TimHoaDonClick" />
-                                                      <ComboBox fx:id="cboNhanVienTimXHD" layoutX="197.0" layoutY="195.0" onAction="#TimHoaDonClick" prefWidth="150.0" />
-                                                      <ComboBox fx:id="cboKhachHangTimXHD" layoutX="529.0" layoutY="195.0" onAction="#TimHoaDonClick" prefWidth="150.0" />
+                                                      <DatePicker fx:id="dateTimXHD" layoutX="505.0" layoutY="93.0" onAction="#TimHoaDonClick" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                                                      <ComboBox fx:id="cboNhanVienTimXHD" layoutX="197.0" layoutY="195.0" onAction="#TimHoaDonClick" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                                      <ComboBox fx:id="cboKhachHangTimXHD" layoutX="529.0" layoutY="195.0" onAction="#TimHoaDonClick" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
                                                    </children>
                                                 </Pane>
-                                                <Label layoutX="867.0" layoutY="330.0" text="Lưu ý: Chỉ được thêm ghi chú cho hóa đơn" textFill="RED">
+                                                <Label layoutX="1060.0" layoutY="323.0" text="***Lưu ý: Chỉ được thêm ghi chú cho hóa đơn" textFill="RED">
                                                    <font>
-                                                      <Font name="System Bold" size="24.0" />
+                                                      <Font name="System Italic" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtNhanVienXHD" editable="false" layoutX="960.0" layoutY="114.0" />
-                                                <TextField fx:id="txtKhachHangXHD" editable="false" layoutX="960.0" layoutY="160.0" />
-                                                <TextField fx:id="txtNgayLapXHD" editable="false" layoutX="960.0" layoutY="229.0" />
+                                                <TextField fx:id="txtNhanVienXHD" editable="false" layoutX="960.0" layoutY="114.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtKhachHangXHD" editable="false" layoutX="960.0" layoutY="170.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtNgayLapXHD" editable="false" layoutX="960.0" layoutY="221.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -355,93 +385,93 @@
                                  <tabs>
                                     <Tab text="Sản Phẩm">
                                        <content>
-                                          <AnchorPane fx:id="snchorPaneSanPham" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane fx:id="snchorPaneSanPham" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <ImageView fx:id="imgSanPham" fitHeight="349.0" fitWidth="398.0" layoutX="1082.0" layoutY="20.0" pickOnBounds="true" />
-                                                <Label layoutX="52.0" layoutY="497.0" text="Tên Sản Phẩm">
+                                                <Label layoutX="52.0" layoutY="510.0" text="Tên Sản Phẩm" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="52.0" layoutY="551.0" text="Loại Sản Phẩm">
+                                                <Label layoutX="50.0" layoutY="560.0" text="Loại Sản Phẩm" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="52.0" layoutY="606.0" text="Giá Nhập">
+                                                <Label layoutX="52.0" layoutY="618.0" text="Giá Nhập" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="52.0" layoutY="670.0" text="Giá Bán">
+                                                <Label layoutX="50.0" layoutY="669.0" text="Giá Bán" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="52.0" layoutY="450.0" text="Mã Sản Phẩm">
+                                                <Label layoutX="53.0" layoutY="458.0" text="Mã Sản Phẩm" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="498.0" layoutY="446.0" text="Hãng Sản Xuất">
+                                                <Label layoutX="498.0" layoutY="446.0" text="Hãng Sản Xuất" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="498.0" layoutY="493.0" text="Tồn Kho">
+                                                <Label layoutX="504.0" layoutY="493.0" text="Tồn Kho" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="498.0" layoutY="547.0" text="Chú Thích">
+                                                <Label layoutX="504.0" layoutY="546.0" text="Chú Thích" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="837.0" layoutY="493.0" text="Cái">
+                                                <Label layoutX="837.0" layoutY="493.0" text="Cái" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="1240.0" layoutY="420.0" text="Tìm Kiếm">
+                                                <Label layoutX="1240.0" layoutY="420.0" text="Tìm Kiếm" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtMaSP" editable="false" layoutX="211.0" layoutY="451.0" />
-                                                <TextField fx:id="txtTenSP" layoutX="211.0" layoutY="498.0" />
-                                                <TextField fx:id="txtGiaNhapSP" layoutX="211.0" layoutY="607.0" />
-                                                <TextField fx:id="txtGiaBanSP" layoutX="211.0" layoutY="685.0" />
-                                                <ComboBox fx:id="cboHangSanXuatSP" layoutX="664.0" layoutY="447.0" prefWidth="150.0" />
-                                                <TextField fx:id="txtTonKhoSP" layoutX="665.0" layoutY="494.0" />
-                                                <TextArea fx:id="txtChuThichSP" layoutX="662.0" layoutY="557.0" prefHeight="150.0" prefWidth="175.0" />
-                                                <Button fx:id="btnThemSP" layoutX="969.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnThemSPClick" prefHeight="50.0" prefWidth="100.0" text="Thêm">
+                                                <TextField fx:id="txtMaSP" editable="false" layoutX="211.0" layoutY="451.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTenSP" layoutX="211.0" layoutY="506.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtGiaNhapSP" layoutX="209.0" layoutY="619.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtGiaBanSP" layoutX="210.0" layoutY="671.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <ComboBox fx:id="cboHangSanXuatSP" layoutX="664.0" layoutY="447.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTonKhoSP" layoutX="663.0" layoutY="502.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextArea fx:id="txtChuThichSP" layoutX="662.0" layoutY="557.0" prefHeight="80.0" prefWidth="176.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF;" />
+                                                <Button fx:id="btnThemSP" layoutX="969.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnThemSPClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Thêm">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnSuaSP" layoutX="969.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnSuaSPClick" prefHeight="50.0" prefWidth="100.0" text="Sửa">
+                                                <Button fx:id="btnSuaSP" layoutX="969.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnSuaSPClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Sửa">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnResetSP" layoutX="969.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnResetSPClick" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                                                <Button fx:id="btnResetSP" layoutX="969.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnResetSPClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Reset">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnXoaSP" layoutX="969.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnXoaSPClick" prefHeight="50.0" prefWidth="100.0" text="Xóa">
+                                                <Button fx:id="btnXoaSP" layoutX="969.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnXoaSPClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Xóa">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <TextField fx:id="txtTimKiemSP" layoutX="1169.0" layoutY="460.0" prefHeight="26.0" prefWidth="249.0" />
-                                                <Button fx:id="btnDoiHinh" layoutX="1169.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnDoiHinhClick" prefWidth="100.0" text="Đổi Hình">
+                                                <TextField fx:id="txtTimKiemSP" layoutX="1169.0" layoutY="460.0" prefHeight="26.0" prefWidth="249.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <Button fx:id="btnDoiHinh" layoutX="1169.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnDoiHinhClick" prefWidth="100.0" style="-fx-background-radius: 20;" text="Đổi Hình">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
                                                 </Button>
-                                                <RadioButton fx:id="radTimTheoTenSP" layoutX="1126.0" layoutY="516.0" mnemonicParsing="false" onAction="#radTimSPClick" selected="true" text="Tìm Theo Tên">
+                                                <RadioButton fx:id="radTimTheoTenSP" layoutX="1126.0" layoutY="516.0" mnemonicParsing="false" onAction="#radTimSPClick" selected="true" text="Tìm Theo Tên" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
@@ -449,18 +479,18 @@
                                                       <ToggleGroup fx:id="TimSanPhamGroup" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="radTimTheoMaSP" layoutX="1332.0" layoutY="516.0" mnemonicParsing="false" onAction="#radTimSPClick" text="Tìm Theo Mã" toggleGroup="$TimSanPhamGroup">
+                                                <RadioButton fx:id="radTimTheoMaSP" layoutX="1332.0" layoutY="516.0" mnemonicParsing="false" onAction="#radTimSPClick" text="Tìm Theo Mã" textFill="WHITE" toggleGroup="$TimSanPhamGroup">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </RadioButton>
-                                                <RadioButton fx:id="radTimTheoLoaiSP" layoutX="1127.0" layoutY="584.0" mnemonicParsing="false" onAction="#radTimSPClick" text="Tìm Theo Loại" toggleGroup="$TimSanPhamGroup">
+                                                <RadioButton fx:id="radTimTheoLoaiSP" layoutX="1127.0" layoutY="584.0" mnemonicParsing="false" onAction="#radTimSPClick" text="Tìm Theo Loại" textFill="WHITE" toggleGroup="$TimSanPhamGroup">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </RadioButton>
-                                                <ComboBox fx:id="cboTimLoaiSanPhamSP" layoutX="1320.0" layoutY="585.0" onAction="#cboTimLoaiSanPhamSPClick" prefWidth="150.0" />
-                                                <Button fx:id="btnXemSPAn" layoutX="1186.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnXemSPAnClick" prefHeight="50.0" prefWidth="234.0" text="Xem Sản Phẩm Đã Ẩn">
+                                                <ComboBox fx:id="cboTimLoaiSanPhamSP" layoutX="1320.0" layoutY="585.0" onAction="#cboTimLoaiSanPhamSPClick" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                                <Button fx:id="btnXemSPAn" layoutX="1186.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnXemSPAnClick" prefHeight="50.0" prefWidth="234.0" style="-fx-background-radius: 20;" text="Xem Sản Phẩm Đã Ẩn">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
@@ -477,8 +507,8 @@
                                                       <TableColumn fx:id="columChuThichSP" minWidth="0.0" prefWidth="160.79986572265625" text="Chú Thích" />
                                                    </columns>
                                                 </TableView>
-                                                <ComboBox fx:id="cboLoaiSanPhamSP" layoutX="210.0" layoutY="548.0" prefWidth="150.0" />
-                                                <Button fx:id="btnXoaHinh" layoutX="1345.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnXoaHinhClick" prefWidth="100.0" text="Xóa Hình">
+                                                <ComboBox fx:id="cboLoaiSanPhamSP" layoutX="211.0" layoutY="557.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                                <Button fx:id="btnXoaHinh" layoutX="1345.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnXoaHinhClick" prefWidth="100.0" style="-fx-background-radius: 20;" text="Xóa Hình">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -489,7 +519,7 @@
                                     </Tab>
                                     <Tab fx:id="tabLoaiSanPham" onSelectionChanged="#tabLoaiSanPhamClick" text="Loại Sản Phẩm Và Sản Phẩm Hết Hàng">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <TableView fx:id="tblLoaiSP" layoutX="66.0" layoutY="48.0" onMouseClicked="#tblLoaiSPClick" prefHeight="328.0" prefWidth="833.0">
                                                    <columns>
@@ -497,53 +527,53 @@
                                                       <TableColumn fx:id="columTenLoaiSanPhamLSP" prefWidth="421.5999755859375" text="Tên Loại Sản Phẩm" />
                                                    </columns>
                                                 </TableView>
-                                                <TableView fx:id="tblSanPhamHetHang" layoutX="66.0" layoutY="474.0" onSort="#tblSanPhamHetHangClick" prefHeight="244.0" prefWidth="823.0">
+                                                <TableView fx:id="tblSanPhamHetHang" layoutX="66.0" layoutY="442.0" onSort="#tblSanPhamHetHangClick" prefHeight="246.0" prefWidth="833.0">
                                                    <columns>
                                                       <TableColumn fx:id="columMaSanPhamHH" prefWidth="224.00001525878906" text="Mã Sản Phẩm" />
                                                       <TableColumn fx:id="columTenSanPhamHH" prefWidth="343.199951171875" text="Tên Sản Phẩm" />
                                                       <TableColumn fx:id="ColumLoaiSanPhamHH" prefWidth="257.5999755859375" text="Loại Sản Phẩm" />
                                                    </columns>
                                                 </TableView>
-                                                <Label layoutX="1045.0" layoutY="86.0" text="Mã Loại Sản Phẩm">
+                                                <Label layoutX="1045.0" layoutY="86.0" text="Mã Loại Sản Phẩm" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="1044.0" layoutY="166.0" text="Tên Loại Sản Phẩm">
+                                                <Label layoutX="1044.0" layoutY="166.0" text="Tên Loại Sản Phẩm" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtMaLoaiSPLSP" editable="false" layoutX="1245.0" layoutY="87.0" />
-                                                <TextField fx:id="txtTenLoaiSPLSP" layoutX="1245.0" layoutY="167.0" />
-                                                <Button fx:id="btnSuaLSP" layoutX="1089.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSuaLSPClick" prefHeight="40.0" prefWidth="100.0" text="Sửa">
+                                                <TextField fx:id="txtMaLoaiSPLSP" editable="false" layoutX="1245.0" layoutY="87.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTenLoaiSPLSP" layoutX="1245.0" layoutY="167.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <Button fx:id="btnSuaLSP" layoutX="1089.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSuaLSPClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Sửa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnReSetLSP" layoutX="1334.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnReSetLSPClick" prefHeight="40.0" prefWidth="100.0" text="Reset">
+                                                <Button fx:id="btnReSetLSP" layoutX="1334.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnReSetLSPClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Reset">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnThemLSP" layoutX="970.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnThemLSPClick" prefHeight="40.0" prefWidth="100.0" text="Thêm">
+                                                <Button fx:id="btnThemLSP" layoutX="970.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnThemLSPClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Thêm">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnXoaLSP" layoutX="1211.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnXoaLSPClick" prefHeight="40.0" prefWidth="100.0" text="Xóa">
+                                                <Button fx:id="btnXoaLSP" layoutX="1211.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnXoaLSPClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Xóa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnAnSanPhamHH" layoutX="1064.0" layoutY="486.0" mnemonicParsing="false" onAction="#btnAnSanPhamHH" prefHeight="100.0" prefWidth="250.0" text="Ẩn Sản Phẩm">
+                                                <Button fx:id="btnAnSanPhamHH" layoutX="1086.0" layoutY="465.0" mnemonicParsing="false" onAction="#btnAnSanPhamHH" prefHeight="100.0" prefWidth="250.0" style="-fx-background-radius: 10;" text="Ẩn Sản Phẩm">
                                                    <font>
-                                                      <Font name="System Bold Italic" size="24.0" />
+                                                      <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnAnTatCaSanPhamHH" layoutX="1064.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnAnTatCaSanPhamHHClick" prefHeight="100.0" prefWidth="250.0" text="Ẩn Tất Cả">
+                                                <Button fx:id="btnAnTatCaSanPhamHH" layoutX="1086.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnAnTatCaSanPhamHHClick" prefHeight="100.0" prefWidth="250.0" style="-fx-background-radius: 10;" text="Ẩn Tất Cả">
                                                    <font>
-                                                      <Font name="System Bold Italic" size="24.0" />
+                                                      <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Button>
                                              </children>
@@ -558,7 +588,7 @@
                   </Tab>
                   <Tab fx:id="tabKhachHang" onSelectionChanged="#tabKhachHangClick" text="Khách Hàng">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                            <children>
                               <TableView fx:id="tblBangKhachHang" layoutX="14.0" layoutY="61.0" onMouseClicked="#tblBangKhachHangClick" prefHeight="330.0" prefWidth="1470.0">
                                  <columns>
@@ -572,77 +602,77 @@
                                     <TableColumn fx:id="columChuThichKH" prefWidth="303.2000488281251" text="Chú Thích" />
                                  </columns>
                               </TableView>
-                              <Label layoutX="90.0" layoutY="641.0" text="Giới Tính">
+                              <Label layoutX="90.0" layoutY="641.0" text="Giới Tính" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="591.0" layoutY="14.0" text="Bảng Khách Hàng">
+                              <Label layoutX="568.0" layoutY="7.0" text="Bảng Khách Hàng" textFill="#eb2528">
                                  <font>
-                                    <Font name="System Bold" size="24.0" />
+                                    <Font name="System Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="90.0" layoutY="496.0" text="Tên">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="90.0" layoutY="569.0" text="Ngày Sinh">
+                              <Label layoutX="90.0" layoutY="496.0" text="Tên" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="90.0" layoutY="434.0" text="Mã KH">
+                              <Label layoutX="90.0" layoutY="569.0" text="Ngày Sinh" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="538.0" layoutY="425.0" text="Địa Chỉ">
+                              <Label layoutX="90.0" layoutY="434.0" text="Mã KH" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="538.0" layoutY="487.0" text="SDT">
+                              <Label layoutX="538.0" layoutY="425.0" text="Địa Chỉ" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="538.0" layoutY="569.0" text="Loại Khách Hàng">
+                              <Label layoutX="538.0" layoutY="487.0" text="SDT" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="538.0" layoutY="641.0" text="Ghi Chú">
+                              <Label layoutX="538.0" layoutY="569.0" text="Loại Khách Hàng" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtMaKH" editable="false" layoutX="227.0" layoutY="435.0" />
-                              <TextField fx:id="txtTenKhachHang" layoutX="227.0" layoutY="497.0" />
-                              <TextField fx:id="txtDiaChiKH" layoutX="719.0" layoutY="425.0" prefHeight="26.0" prefWidth="219.0" />
-                              <TextField fx:id="txtSDTKhachHang" layoutX="719.0" layoutY="488.0" />
-                              <Button fx:id="btnXoaKH" layoutX="1002.0" layoutY="498.0" mnemonicParsing="false" onAction="#btnXoaKHClick" prefHeight="50.0" prefWidth="100.0" text="Xóa">
+                              <Label layoutX="538.0" layoutY="641.0" text="Ghi Chú" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtMaKH" editable="false" layoutX="227.0" layoutY="435.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                              <TextField fx:id="txtTenKhachHang" layoutX="227.0" layoutY="497.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                              <TextField fx:id="txtDiaChiKH" layoutX="719.0" layoutY="425.0" prefHeight="26.0" prefWidth="219.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                              <TextField fx:id="txtSDTKhachHang" layoutX="719.0" layoutY="488.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                              <Button fx:id="btnXoaKH" layoutX="1002.0" layoutY="498.0" mnemonicParsing="false" onAction="#btnXoaKHClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Xóa">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="ptnThemKH" layoutX="1002.0" layoutY="413.0" mnemonicParsing="false" onAction="#btnThemKHClick" prefHeight="50.0" prefWidth="100.0" text="Thêm">
+                              <Button fx:id="ptnThemKH" layoutX="1002.0" layoutY="413.0" mnemonicParsing="false" onAction="#btnThemKHClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Thêm">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnSuaKH" layoutX="1002.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnSuaKHClick" prefHeight="50.0" prefWidth="100.0" text="Sửa">
+                              <Button fx:id="btnSuaKH" layoutX="1002.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnSuaKHClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Sửa">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnResetKH" layoutX="1002.0" layoutY="673.0" mnemonicParsing="false" onAction="#btnResetKHClick" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                              <Button fx:id="btnResetKH" layoutX="1002.0" layoutY="673.0" mnemonicParsing="false" onAction="#btnResetKHClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Reset">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
                               <DatePicker fx:id="dayNgaySinhKH" layoutX="227.0" layoutY="570.0" promptText="1-1-2000" />
-                              <RadioButton fx:id="radGioiTinhKHNam" layoutX="217.0" layoutY="641.0" mnemonicParsing="false" selected="true" text="Nam">
+                              <RadioButton fx:id="radGioiTinhKHNam" layoutX="217.0" layoutY="641.0" mnemonicParsing="false" selected="true" text="Nam" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -650,33 +680,33 @@
                                     <ToggleGroup fx:id="GioiTinhKHGroup" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="radGioiTinhKHNu" layoutX="327.0" layoutY="641.0" mnemonicParsing="false" text="Nữ" toggleGroup="$GioiTinhKHGroup">
+                              <RadioButton fx:id="radGioiTinhKHNu" layoutX="327.0" layoutY="641.0" mnemonicParsing="false" text="Nữ" textFill="WHITE" toggleGroup="$GioiTinhKHGroup">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </RadioButton>
-                              <ComboBox fx:id="cbLoaiKhachHang" layoutX="718.0" layoutY="570.0" prefWidth="150.0" />
-                              <TextArea fx:id="txtGhiChuKhachHang" layoutX="718.0" layoutY="622.0" prefHeight="119.0" prefWidth="236.0" />
-                              <Pane layoutX="1164.0" layoutY="434.0" prefHeight="274.0" prefWidth="310.0" style="-fx-border-radius: 20; -fx-border-color: black;">
+                              <ComboBox fx:id="cbLoaiKhachHang" layoutX="718.0" layoutY="570.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                              <TextArea fx:id="txtGhiChuKhachHang" layoutX="718.0" layoutY="622.0" prefHeight="119.0" prefWidth="236.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF;" />
+                              <Pane layoutX="1164.0" layoutY="434.0" prefHeight="274.0" prefWidth="310.0" style="-fx-border-radius: 20; -fx-border-color: #EF6C15;">
                                  <children>
-                                    <TextField fx:id="txtTimTenKH" layoutX="147.0" layoutY="88.0" />
-                                    <ComboBox fx:id="cbTimLoaiKH" layoutX="146.0" layoutY="144.0" prefWidth="150.0" />
-                                    <Label layoutX="23.0" layoutY="143.0" text="Loại KH">
+                                    <TextField fx:id="txtTimTenKH" layoutX="147.0" layoutY="88.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                    <ComboBox fx:id="cbTimLoaiKH" layoutX="146.0" layoutY="144.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
+                                    <Label layoutX="23.0" layoutY="143.0" text="Loại KH" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="23.0" layoutY="87.0" text="Tên">
+                                    <Label layoutX="23.0" layoutY="87.0" text="Tên" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="btnTimKH" layoutX="108.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnTimKHClick" prefHeight="50.0" prefWidth="113.0" text="Tìm">
+                                    <Button fx:id="btnTimKH" layoutX="108.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnTimKHClick" prefHeight="50.0" prefWidth="113.0" style="-fx-background-radius: 10;" text="Tìm">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="102.0" layoutY="14.0" text="Tìm Kiếm">
+                                    <Label layoutX="102.0" layoutY="14.0" text="Tìm Kiếm" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
@@ -695,7 +725,7 @@
                                  <tabs>
                                     <Tab text="Nhân Viên">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <TableView fx:id="tblNhanVien" layoutX="11.0" layoutY="54.0" onMouseClicked="#tblNhanVienClick" prefHeight="330.0" prefWidth="1446.0">
                                                    <columns>
@@ -710,71 +740,71 @@
                                                       <TableColumn fx:id="columChuThichNhanVien" prefWidth="212.800048828125" text="Chú Thích" />
                                                    </columns>
                                                 </TableView>
-                                                <Label layoutX="626.0" layoutY="14.0" text="Thông Tin Nhân Viên">
+                                                <Label layoutX="626.0" layoutY="14.0" text="Thông Tin Nhân Viên" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="62.0" layoutY="485.0" text="Tên Nhân Viên">
+                                                <Label layoutX="62.0" layoutY="485.0" text="Tên Nhân Viên" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="62.0" layoutY="544.0" text="Ngày Sinh">
+                                                <Label layoutX="62.0" layoutY="544.0" text="Ngày Sinh" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="62.0" layoutY="601.0" text="Giới Tính">
+                                                <Label layoutX="62.0" layoutY="601.0" text="Giới Tính" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="62.0" layoutY="656.0" text="Ngày Vào Làm">
+                                                <Label layoutX="62.0" layoutY="656.0" text="Ngày Vào Làm" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="598.0" layoutY="435.0" text="Chức Vụ">
+                                                <Label layoutX="598.0" layoutY="435.0" text="Chức Vụ" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="598.0" layoutY="485.0" text="Địa Chỉ">
+                                                <Label layoutX="598.0" layoutY="485.0" text="Địa Chỉ" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="62.0" layoutY="435.0" text="Mã Nhân Viên">
+                                                <Label layoutX="62.0" layoutY="435.0" text="Mã Nhân Viên" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="598.0" layoutY="530.0" text="Số Điện Thoại">
+                                                <Label layoutX="598.0" layoutY="530.0" text="Số Điện Thoại" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="598.0" layoutY="587.0" text="Ghi Chú">
+                                                <Label layoutX="598.0" layoutY="587.0" text="Ghi Chú" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="1250.0" layoutY="467.0" text="Tìm Kiếm">
+                                                <Label layoutX="1250.0" layoutY="467.0" text="Tìm Kiếm" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtMaNhanVien" editable="false" layoutX="254.0" layoutY="436.0" />
-                                                <TextField fx:id="txtTenNhanVien" layoutX="254.0" layoutY="486.0" />
+                                                <TextField fx:id="txtMaNhanVien" editable="false" layoutX="254.0" layoutY="436.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTenNhanVien" layoutX="254.0" layoutY="486.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
                                                 <TextArea fx:id="txtChuThichNV" layoutX="738.0" layoutY="606.0" prefHeight="154.0" prefWidth="222.0" />
-                                                <TextField fx:id="txtDiaChiNhanVien" layoutX="738.0" layoutY="486.0" />
-                                                <TextField fx:id="txtSDTNhanVien" layoutX="738.0" layoutY="531.0" />
-                                                <TextField fx:id="txtTimKiemNhanVien" layoutX="1243.0" layoutY="545.0" />
+                                                <TextField fx:id="txtDiaChiNhanVien" layoutX="738.0" layoutY="486.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtSDTNhanVien" layoutX="738.0" layoutY="531.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtTimKiemNhanVien" layoutX="1243.0" layoutY="545.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
                                                 <DatePicker fx:id="dateNgaySinhNV" layoutX="254.0" layoutY="545.0" />
                                                 <DatePicker fx:id="dateNgayVaoLamNV" layoutX="254.0" layoutY="657.0" />
-                                                <ComboBox fx:id="cboChucVuNhanVien" layoutX="737.0" layoutY="436.0" prefWidth="150.0" />
-                                                <RadioButton fx:id="radNVNam" layoutX="254.0" layoutY="606.0" mnemonicParsing="false" selected="true" text="Nam">
+                                                <ComboBox fx:id="cboChucVuNhanVien" layoutX="737.0" layoutY="436.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <RadioButton fx:id="radNVNam" layoutX="254.0" layoutY="606.0" mnemonicParsing="false" selected="true" text="Nam" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
@@ -782,32 +812,32 @@
                                                       <ToggleGroup fx:id="GioiTinhNVGroup" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="radNVNu" layoutX="369.0" layoutY="606.0" mnemonicParsing="false" text="Nữ" toggleGroup="$GioiTinhNVGroup">
+                                                <RadioButton fx:id="radNVNu" layoutX="369.0" layoutY="606.0" mnemonicParsing="false" text="Nữ" textFill="WHITE" toggleGroup="$GioiTinhNVGroup">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </RadioButton>
-                                                <Button fx:id="btnXoaNhanVien" layoutX="1036.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnXoaNhanVienClick" prefHeight="50.0" prefWidth="100.0" text="Xóa">
+                                                <Button fx:id="btnXoaNhanVien" layoutX="1036.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnXoaNhanVienClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Xóa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnSuaNhanVien" layoutX="1036.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnSuaNhanVienClick" prefHeight="50.0" prefWidth="100.0" text="Sửa">
+                                                <Button fx:id="btnSuaNhanVien" layoutX="1036.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnSuaNhanVienClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Sửa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnThemNhanVien" layoutX="1036.0" layoutY="426.0" mnemonicParsing="false" onAction="#btnThemNhanVienClick" prefHeight="50.0" prefWidth="100.0" text="Thêm">
+                                                <Button fx:id="btnThemNhanVien" layoutX="1036.0" layoutY="426.0" mnemonicParsing="false" onAction="#btnThemNhanVienClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Thêm">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnReSetNhanVien" layoutX="1036.0" layoutY="698.0" mnemonicParsing="false" onAction="#btnReSetNhanVienClick" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                                                <Button fx:id="btnReSetNhanVien" layoutX="1036.0" layoutY="698.0" mnemonicParsing="false" onAction="#btnReSetNhanVienClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Reset">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <RadioButton fx:id="radTimTheoTen" layoutX="1182.0" layoutY="619.0" mnemonicParsing="false" onAction="#radTimTheoTenClick" text="Tìm Theo Tên">
+                                                <RadioButton fx:id="radTimTheoTen" layoutX="1182.0" layoutY="619.0" mnemonicParsing="false" onAction="#radTimTheoTenClick" text="Tìm Theo Tên" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -815,7 +845,7 @@
                                                       <ToggleGroup fx:id="TimKiemNVGroup" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="radTimTheoMa" layoutX="1335.0" layoutY="618.0" mnemonicParsing="false" onAction="#radTimTheoMaClick" text="Tìm Theo Mã" toggleGroup="$TimKiemNVGroup">
+                                                <RadioButton fx:id="radTimTheoMa" layoutX="1335.0" layoutY="618.0" mnemonicParsing="false" onAction="#radTimTheoMaClick" text="Tìm Theo Mã" textFill="WHITE" toggleGroup="$TimKiemNVGroup">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -826,7 +856,7 @@
                                     </Tab>
                                     <Tab fx:id="tabTaiKhoan" onSelectionChanged="#tabTaiKhoanClick" text="Tài Khoản và Phân Quyền">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                                              <children>
                                                 <TableView fx:id="tblThongTinTaiKhoan" layoutX="14.0" layoutY="68.0" onMouseClicked="#tblThongTinTaiKhoanClick" prefHeight="656.0" prefWidth="863.0">
                                                    <columns>
@@ -838,67 +868,67 @@
                                                       <TableColumn fx:id="columChuThichTK" prefWidth="177.5999755859375" text="Chú Thích" />
                                                    </columns>
                                                 </TableView>
-                                                <Label layoutX="951.0" layoutY="330.0" text="Password">
+                                                <Label layoutX="951.0" layoutY="330.0" text="Password" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="951.0" layoutY="127.0" text="ID tài Khoản">
+                                                <Label layoutX="951.0" layoutY="127.0" text="ID tài Khoản" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="951.0" layoutY="185.0" text="Tên Nhân Viên">
+                                                <Label layoutX="951.0" layoutY="185.0" text="Tên Nhân Viên" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="951.0" layoutY="395.0" text="Quyền">
+                                                <Label layoutX="951.0" layoutY="395.0" text="Quyền" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="947.0" layoutY="450.0" text="Chú Thích">
+                                                <Label layoutX="947.0" layoutY="450.0" text="Chú Thích" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="951.0" layoutY="256.0" text="User">
+                                                <TextField fx:id="txtIDTK" editable="false" layoutX="1146.0" layoutY="128.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtUserTK" layoutX="1146.0" layoutY="256.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <TextField fx:id="txtPassTK" layoutX="1146.0" layoutY="331.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <ComboBox fx:id="cboQuyenTK" layoutX="1145.0" layoutY="396.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <Label layoutX="951.0" layoutY="256.0" text="User" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="330.0" layoutY="22.0" text="Thông Tin Tài Khoản">
+                                                <Label layoutX="330.0" layoutY="22.0" text="Thông Tin Tài Khoản" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txtIDTK" editable="false" layoutX="1146.0" layoutY="128.0" />
-                                                <TextField fx:id="txtUserTK" layoutX="1146.0" layoutY="256.0" />
-                                                <TextField fx:id="txtPassTK" layoutX="1146.0" layoutY="331.0" />
-                                                <ComboBox fx:id="cboQuyenTK" layoutX="1145.0" layoutY="396.0" prefWidth="150.0" />
                                                 <TextArea fx:id="txtChuThichTK" layoutX="1092.0" layoutY="462.0" prefHeight="108.0" prefWidth="299.0" />
-                                                <Button fx:id="btnThemTK" layoutX="1065.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnThemTKClick" prefHeight="50.0" prefWidth="100.0" text="Thêm">
+                                                <Button fx:id="btnThemTK" layoutX="1065.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnThemTKClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Thêm">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnXoaTk" layoutX="1295.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnXoaTkClick" prefHeight="50.0" prefWidth="100.0" text="Xóa">
+                                                <Button fx:id="btnXoaTk" layoutX="1295.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnXoaTkClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Xóa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnSuaTK" layoutX="1065.0" layoutY="681.0" mnemonicParsing="false" onAction="#btnSuaTKClick" prefHeight="50.0" prefWidth="100.0" text="Sửa">
+                                                <ComboBox fx:id="cboTenNhanVienTK" layoutX="1145.0" layoutY="186.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+                                                <Button fx:id="btnSuaTK" layoutX="1065.0" layoutY="681.0" mnemonicParsing="false" onAction="#btnSuaTKClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Sửa">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnResetTK" layoutX="1295.0" layoutY="681.0" mnemonicParsing="false" onAction="#btnResetTKClick" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                                                <Button fx:id="btnResetTK" layoutX="1295.0" layoutY="681.0" mnemonicParsing="false" onAction="#btnResetTKClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Reset">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <ComboBox fx:id="cboTenNhanVienTK" layoutX="1145.0" layoutY="186.0" prefWidth="150.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -911,7 +941,7 @@
                   </Tab>
                   <Tab fx:id="tabDoanhThu" onSelectionChanged="#tabDoanhThuClick" text="Thống Kê">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                            <children>
                               <DatePicker fx:id="TKTuNgay" layoutX="1027.0" layoutY="109.0" onAction="#btnChonNgayClick" />
                               <DatePicker fx:id="TKDenNgay" layoutX="1311.0" layoutY="109.0" onAction="#btnChonNgayClick" />
@@ -925,27 +955,27 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Button>
-                              <Label layoutX="636.0" layoutY="23.0" text="Thống Kê" textFill="#301864">
+                              <Label layoutX="636.0" layoutY="23.0" text="Thống Kê" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="1078.0" layoutY="69.0" text="Từ Ngày">
+                              <Label layoutX="1078.0" layoutY="69.0" text="Từ Ngày" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="1356.0" layoutY="69.0" text="Đến Ngày">
+                              <Label layoutX="1356.0" layoutY="69.0" text="Đến Ngày" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <BarChart fx:id="bcThongKe" layoutX="14.0" layoutY="80.0" prefHeight="645.0" prefWidth="987.0" title="Biểu Đồ Thống Kê">
+                              <BarChart fx:id="bcThongKe" layoutX="14.0" layoutY="80.0" prefHeight="645.0" prefWidth="987.0">
                                 <xAxis>
-                                  <CategoryAxis fx:id="bcSanPham" label="Sản Phẩm" side="BOTTOM" />
+                                  <CategoryAxis fx:id="bcSanPham" side="BOTTOM" tickLabelFill="WHITE" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis fx:id="bcSoLuong" label="Số Lượng" side="LEFT" />
+                                  <NumberAxis fx:id="bcSoLuong" side="LEFT" tickLabelFill="WHITE" />
                                 </yAxis>
                               </BarChart>
                               <TableView fx:id="tbThongKe" layoutX="1024.0" layoutY="293.0" onMouseClicked="#tbThongKeClick" prefHeight="382.0" prefWidth="474.0">
@@ -956,7 +986,7 @@
                                     <TableColumn fx:id="colTongTienTK" prefWidth="136.800048828125" text="Tổng Tiền" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="btnResetThongKe" layoutX="1197.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnResetThongKeClick" prefHeight="40.0" prefWidth="127.0" text="Clear">
+                              <Button fx:id="btnResetThongKe" layoutX="1197.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnResetThongKeClick" prefHeight="40.0" prefWidth="127.0" text="Reset">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -966,7 +996,7 @@
                   </Tab>
                   <Tab fx:id="tabDoiTac" onSelectionChanged="#tabDoiTacClick" text="Đối Tác">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #001E40;">
                            <children>
                               <TableView fx:id="tblNhaPhanPhoi" layoutX="14.0" layoutY="14.0" onMouseClicked="#tblNhaPhanPhoiClick" prefHeight="687.0" prefWidth="871.0">
                                  <columns>
@@ -978,69 +1008,64 @@
                                     <TableColumn fx:id="columChuThichNPP" prefWidth="185.5999755859375" text="Chú Thích" />
                                  </columns>
                               </TableView>
-                              <Label layoutX="917.0" layoutY="55.0" text="Mã NPP">
+                              <Label layoutX="917.0" layoutY="55.0" text="Mã NPP" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="917.0" layoutY="133.0" text="Địa Chỉ">
+                              <Label layoutX="917.0" layoutY="133.0" text="Địa Chỉ" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="917.0" layoutY="235.0" text="Email">
+                              <Label layoutX="917.0" layoutY="235.0" text="Email" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="911.0" layoutY="287.0" text="Chú Thích">
+                              <Label layoutX="911.0" layoutY="287.0" text="Chú Thích" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="917.0" layoutY="183.0" text="SDT">
+                              <Label layoutX="917.0" layoutY="183.0" text="SDT" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="917.0" layoutY="91.0" text="Tên NPP">
+                              <Label layoutX="917.0" layoutY="91.0" text="Tên NPP" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtMaNPP" editable="false" layoutX="1177.0" layoutY="57.0" prefHeight="26.0" prefWidth="214.0" />
-                              <TextField fx:id="txtTenNPP" layoutX="1177.0" layoutY="93.0" prefHeight="26.0" prefWidth="214.0" />
-                              <TextField fx:id="txtDiaChiNPP" layoutX="1177.0" layoutY="135.0" prefHeight="26.0" prefWidth="214.0" />
-                              <TextField fx:id="txtSDTNPP" layoutX="1177.0" layoutY="185.0" prefHeight="26.0" prefWidth="214.0" />
-                              <TextField fx:id="txtEmailNPP" layoutX="1121.0" layoutY="250.0" prefHeight="26.0" prefWidth="270.0" />
+                              <TextField fx:id="txtMaNPP" editable="false" layoutX="1177.0" layoutY="57.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtTenNPP" layoutX="1177.0" layoutY="93.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtDiaChiNPP" layoutX="1177.0" layoutY="135.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtSDTNPP" layoutX="1177.0" layoutY="185.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtEmailNPP" layoutX="1121.0" layoutY="250.0" prefHeight="26.0" prefWidth="270.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" />
                               <TextArea fx:id="textChuThichNPP" layoutX="1053.0" layoutY="313.0" prefHeight="200.0" prefWidth="338.0" />
-                              <Button fx:id="btnThemNPP" layoutX="1003.0" layoutY="548.0" mnemonicParsing="false" onAction="#btnThemNPPClick" prefHeight="60.0" prefWidth="100.0" text="Thêm">
+                              <Button fx:id="btnThemNPP" layoutX="1003.0" layoutY="548.0" mnemonicParsing="false" onAction="#btnThemNPPClick" prefHeight="60.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Thêm">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnSuaNPP" layoutX="1341.0" layoutY="548.0" mnemonicParsing="false" onAction="#btnSuaNPPClick" prefHeight="60.0" prefWidth="100.0" text="Sửa">
+                              <Button fx:id="btnSuaNPP" layoutX="1341.0" layoutY="548.0" mnemonicParsing="false" onAction="#btnSuaNPPClick" prefHeight="60.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Sửa">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnSesetNPP" layoutX="1341.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnResetNPPClick" prefHeight="60.0" prefWidth="100.0" text="Reset">
+                              <Button fx:id="btnSesetNPP" layoutX="1341.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnResetNPPClick" prefHeight="60.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Reset">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnXoaNPP" layoutX="1003.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnXoaNPPClick" prefHeight="60.0" prefWidth="100.0" text="Xóa">
+                              <Button fx:id="btnXoaNPP" layoutX="1003.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnXoaNPPClick" prefHeight="60.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Xóa">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
                            </children>
                         </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Help">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                </tabs>

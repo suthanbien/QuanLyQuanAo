@@ -77,8 +77,7 @@ public class ControllerDangKy {
 
 
                 if (kt == true) {
-                    String ctv = "insert into Users values(26 ,'" + TenDangNhap + "' , '" + Password + "' ," + Quyen
-                            + ", N' ')";
+                    String ctv = "insert into Users values(26 ,'" + TenDangNhap + "' , '" + Password + "' ,  5, N' ')";
                     System.out.println(ctv);
                     connectionClass.ExcuteQueryUpdateDB(ctv);
                     setMacDinh();

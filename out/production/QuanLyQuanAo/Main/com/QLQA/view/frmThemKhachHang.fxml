@@ -14,8 +14,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="478.0" style="-fx-background-color: #001E40; -fx-background-radius: 40;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.com.QLQA.controller.ControllerThemKhachHang">
    <children>
-      <TextField fx:id="txtTenKhachHang" layoutX="173.0" layoutY="86.0" promptText="Tên Khách Hàng" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
-      <TextField fx:id="txtDiaChi" layoutX="173.0" layoutY="203.0" promptText="Địa Chỉ" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+      <TextField fx:id="txtTenKhachHang" layoutX="202.0" layoutY="88.0" promptText="Tên Khách Hàng" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+      <TextField fx:id="txtDiaChi" layoutX="202.0" layoutY="205.0" promptText="Địa Chỉ" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
       <ComboBox fx:id="cboLoaiKhachHang" layoutX="171.0" layoutY="357.0" prefWidth="150.0" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="combo-box" stylesheets="@../../../css/styleColorText.css" />
       <RadioButton fx:id="radNam" layoutX="137.0" layoutY="321.0" mnemonicParsing="false" selected="true" text="Nam" textFill="WHITE">
          <font>
@@ -31,8 +31,8 @@
          </font>
       </RadioButton>
       <TextArea fx:id="textGhiChu" layoutX="130.0" layoutY="421.0" prefHeight="119.0" prefWidth="233.0" />
-      <TextField fx:id="txtNgaySinh" layoutX="173.0" layoutY="138.0" promptText="Ngày Sinh" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
-      <TextField fx:id="txtSDT" layoutX="173.0" layoutY="265.0" promptText="Số Điện Thoại" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+      <TextField fx:id="txtNgaySinh" layoutX="203.0" layoutY="146.0" promptText="Ngày Sinh" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
+      <TextField fx:id="txtSDT" layoutX="202.0" layoutY="267.0" promptText="Số Điện Thoại" style="-fx-background-color: #001E40; -fx-border-color: #0AC9FF; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../css/styleColorText.css" />
       <Label layoutX="214.0" layoutY="394.0" text="Ghi Chú" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -62,10 +62,30 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="148.0" layoutY="14.0" prefHeight="34.0" prefWidth="201.0" text="Khách Hàng Mới" textFill="WHITE">
+      <Label layoutX="98.0" prefHeight="75.0" prefWidth="295.0" text="Khách Hàng Mới" textFill="#eb2528">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/9.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/7.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/6.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/8.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
